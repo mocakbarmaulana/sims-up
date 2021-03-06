@@ -60,7 +60,11 @@
                         <!-- /.col -->
                     </div>
                 </form>
-
+                <div class="row">
+                    <div class="col mt-3">
+                        <a href="{{route('register')}}" class="text-center">Register</a>
+                    </div>
+                </div>
             </div>
             <!-- /.card-body -->
         </div>

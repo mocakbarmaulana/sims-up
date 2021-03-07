@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller
@@ -15,7 +16,10 @@ class SkillController extends Controller
     public function index()
     {
         $active = 'Skill';
-        return view('admin.skill', compact('active'));
+
+        $skills = Skill::orderBy('name', 'ASC')->get();
+
+        return view('admin.skill', compact('active', 'skills'));
         
     }
 
@@ -38,9 +42,20 @@ class SkillController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nameSkill' => 'required|string|max:50|unique:skills'
+            'skill' => 'required|string|max:50|unique:skills,name',
+            'description' => 'required|max:200',
         ]);
 
+        $request->request->add(['slug' => $request->skill]);
+
+        Skill::create([
+            'name' => $request->skill,
+            'slug' => $request->slug,
+            'description' => $request->description,
+            'status' => true,
+        ]);
+
+            return redirect(route('skill.index'))->with('success', 'Skill baru berhasil ditambahkan!');
         
     }
 

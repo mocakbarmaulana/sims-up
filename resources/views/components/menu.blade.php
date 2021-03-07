@@ -24,7 +24,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('logoutAll')}}">
                     <i class="nav-icon fas fa-sign-out-alt"></i>
                     <p>Sign Out</p>
                 </a>

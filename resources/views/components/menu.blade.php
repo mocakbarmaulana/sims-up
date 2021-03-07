@@ -15,12 +15,13 @@
 
             @foreach ($list as $item)
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon "></i>
+                <a href="#" class="nav-link {{$isActive($item['label']) ? 'active' : ''}}">
+                    <i class="nav-icon {{$item['icon']}} "></i>
                     <p>{{$item['label']}}</p>
                 </a>
             </li>
             @endforeach
+
 
             <li class="nav-item">
                 <a class="nav-link" href="#">

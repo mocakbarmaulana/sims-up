@@ -12,9 +12,10 @@ class Menu extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $active;
+    public function __construct($active)
     {
-        //
+        $this->active = $active;
     }
 
     /**
@@ -25,29 +26,40 @@ class Menu extends Component
     public function render()
     {
         $username = Auth::user()->name;
-        return view('components.menu', ['username' => $username]);
+        $active = $this->active;
+        return view('components.menu', compact('username', 'active'));
     }
 
     public function list() {
         return [
             [
-                'label' => 'Skill'
+                'label' => 'Skill',
+                'icon' => 'fas fa-trophy'
             ],
             [
-                'label' => 'Learner'
+                'label' => 'Class',
+                'icon' => 'fab fa-discourse'
             ],
             [
-                'label' => 'Class'
+                'label' => 'Learner',
+                'icon' => 'fas fa-user-graduate',
             ],
             [
-                'label' => 'Teacher'
+                'label' => 'Teacher',
+                'icon' => 'fas fa-chalkboard-teacher',
             ],
             [
-                'label' => 'Order'
+                'label' => 'Order',
+                'icon' => 'fas fa-shopping-basket'
             ],
             [
-                'label' => 'Payment'
+                'label' => 'Payment',
+                'icon' => 'fas fa-cash-register',
             ],
         ];
+    }
+
+    public function isActive($label){
+        return $label == $this->active;
     }
 }

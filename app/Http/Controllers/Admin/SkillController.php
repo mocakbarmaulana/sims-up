@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class SkillController extends Controller
 {
-    //
+    public function index(){
+        $active = 'Skill';
+        return view('admin.skill', compact('active'));
+    }
 }

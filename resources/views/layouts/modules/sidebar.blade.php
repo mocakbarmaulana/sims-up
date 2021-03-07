@@ -7,7 +7,6 @@
         <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
 
-
-    <x-menu />
+    <x-menu :active="$active" />
     <!-- /.sidebar -->
 </aside>

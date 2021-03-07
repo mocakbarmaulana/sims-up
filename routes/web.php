@@ -21,3 +21,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Admin Route
+// Route::get('/skill', [App\Http\Controllers\Admin\SkillController::class, 'index'])->name('admin.skill');
+
+Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function(){
+    Route::resource('skill', 'App\Http\Controllers\Admin\SkillController')->except(['create', 'show']);
+});

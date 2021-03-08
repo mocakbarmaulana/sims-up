@@ -19,7 +19,7 @@ class SkillController extends Controller
 
         $skills = Skill::orderBy('name', 'ASC')->paginate(10);
 
-        return view('admin.skill', compact('active', 'skills'));
+        return view('admin.skill.skill', compact('active', 'skills'));
         
     }
 
@@ -78,7 +78,11 @@ class SkillController extends Controller
      */
     public function edit($id)
     {
-        //
+        $active = 'Skill';
+
+        $skill = Skill::find($id);
+
+        return view('admin.skill.edit', compact('active', 'skill'));
     }
 
     /**
@@ -90,7 +94,19 @@ class SkillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'skill' => 'required|string|max:50|unique:skills,name,' . $id,
+            'description' => 'required|max:200',
+            'status' => 'required',
+        ]);
+        
+        $skill = Skill::find($id);
+        $skill->name = $request->skill;
+        $skill->description = $request->description;
+        $skill->status = $request->status;
+        $skill->save();
+
+        return redirect()->back()->with('success', 'Skill berhasil diedit');
     }
 
     /**

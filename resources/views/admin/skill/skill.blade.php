@@ -69,7 +69,8 @@
                                 <td>{{$skill->name}}</td>
                                 <td class="text-center">{{$skill->created_at->format('d/m/Y')}}</td>
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                                    <a href="{{route('skill.edit', $skill->id)}}"
+                                        class="btn btn-primary btn-sm">Edit</a>
                                     <button type="button" class="btn btn-secondary btn-sm btn-delete-skill"
                                         data-idskill="{{$skill->id}}" data-toggle="modal"
                                         data-target="#btnDeleteSkill">Delete</button>

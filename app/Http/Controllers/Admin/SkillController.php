@@ -17,7 +17,7 @@ class SkillController extends Controller
     {
         $active = 'Skill';
 
-        $skills = Skill::orderBy('name', 'ASC')->get();
+        $skills = Skill::orderBy('name', 'ASC')->paginate(10);
 
         return view('admin.skill', compact('active', 'skills'));
         
@@ -101,6 +101,8 @@ class SkillController extends Controller
      */
     public function destroy($id)
     {
-        //
+       Skill::destroy($id);
+
+       return redirect(route('skill.index'))->with('success', 'Skill berhasil dihapus');
     }
 }

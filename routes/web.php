@@ -26,7 +26,8 @@ Auth::routes();
 // Route::get('/skill', [App\Http\Controllers\Admin\SkillController::class, 'index'])->name('admin.skill');
 
 Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function(){
-    Route::resource('skill', 'App\Http\Controllers\Admin\SkillController')->except(['create', 'show']);
+    Route::resource('skill', 'App\Http\Controllers\Admin\SkillController');
+    Route::resource('teacher', 'App\Http\Controllers\Admin\TeacherController');
 });
 
 

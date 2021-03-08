@@ -8,7 +8,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Dashboard</li>
-        <li class="breadcrumb-item active">{{$active}}</li>
+        <li class="breadcrumb-item active"><a href="{{route('skill.index')}}">{{$active}}</a></li>
     </ol>
 </nav>
 <div class="mx-3 p-2 bg-light">

@@ -17,12 +17,56 @@
         {{session('success')}}
     </div>
     @endif
-    <h1>Ini Teacher</h1>
     <div class="row">
-        <div class="col bg-danger">
-            cuih
+        <div class="col">
+            <div class="search">
+                <form action="" method="GET">
+                    <div class="input-group mb-3">
+                        {{-- @csrf --}}
+                        <input type="text" name="q" class="form-control" placeholder="Search Name">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card">
+                <div class="card-header bg-dark">
+                    <h5>List Teacher</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">No.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col" class="text-center">Email</th>
+                                <th scope="col" class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($teachers as $teacher)
+                            <tr>
+                                <th scope="row">
+                                    {{($teachers->currentPage() - 1) * $teachers->perPage() + $loop->iteration}}.
+                                </th>
+                                <td>
+                                    <i class="{{$teacher->getCheckStatus($teacher->status)}}"></i>
+                                    {{$teacher->getCutNameAttribute($teacher->name)}}
+                                </td>
+                                <td class="text-center">{{$teacher->email}}</td>
+                                <td class="text-center"><a href="{{route('teacher.edit', $teacher->id)}}"
+                                        class="btn btn-sm btn-primary">Edit</a></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <div class="my-2">
+                        {{$teachers->links()}}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-1"></div>
         <div class="col-4">
             <div class="card">
                 <div class="card-header bg-dark">

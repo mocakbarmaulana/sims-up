@@ -13,11 +13,17 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $active = 'Teacher';
 
-        return view('admin.teacher.index', compact('active'));
+        $q = $request->q;
+        $teachers = Teacher::where("name", "like", "%{$q}%")
+            ->orderBy("name", "ASC")
+            ->paginate(10);
+
+
+        return view('admin.teacher.index', compact('active', 'teachers'));
     }
 
     /**
@@ -75,7 +81,10 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        //
+        $active = "Teacher";
+        $teacher = Teacher::find($id);
+
+        return view("admin.teacher.edit", compact('active', 'teacher'));
     }
 
     /**
@@ -87,7 +96,25 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:150',
+            'email' => 'required|unique:teachers,email,' . $id,
+            'address' => 'required',
+            'status' => 'required',
+            'password' => 'confirmed',
+        ]);
+
+        $teacher = Teacher::find($id);
+        $teacher->name = $request->name;
+        $teacher->email = $request->email;
+        $teacher->address = $request->address;
+        $teacher->status = $request->status;
+        if(!empty($request->password)) { 
+            $teacher->password = $request->password;
+        };
+        $teacher->save();
+
+        return redirect()->back()->with('success', 'Teacher berhasil diupdate');
     }
 
     /**
@@ -98,6 +125,8 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Teacher::destroy($id);
+
+        return redirect(route('teacher.index'))->with('success', 'Teacher berhasil dihapus');
     }
 }

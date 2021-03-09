@@ -16,7 +16,19 @@ class Teacher extends Model
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function setStatusAttribute(){
-        $this->attributes['status'] = 1;
+    public function getCutNameAttribute($value){
+        if (strlen($value) > 20) {
+            return substr($value,0,20) . '...'; 
+        } else {
+            return $value;
+        }
+    }
+
+    public function getCheckStatus($value){
+        if ($value == 1){
+            return "fas fa-check-circle text-success";
+        } else {
+            return "fas fa-times-circle text-danger";
+        }
     }
 }

@@ -35,32 +35,32 @@ class Menu extends Component
             [
                 'label' => 'Skill',
                 'icon' => 'fas fa-trophy',
-                'link' => 'skill',
+                'link' => 'skill.index',
             ],
             [
                 'label' => 'Class',
                 'icon' => 'fab fa-discourse',
-                'link' => '#',
+                'link' => 'skill.index',
             ],
             [
                 'label' => 'Learner',
                 'icon' => 'fas fa-user-graduate',
-                'link' => '#',
+                'link' => 'skill.index',
             ],
             [
                 'label' => 'Teacher',
                 'icon' => 'fas fa-chalkboard-teacher',
-                'link' => 'teacher',
+                'link' => 'teacher.index',
             ],
             [
                 'label' => 'Order',
                 'icon' => 'fas fa-shopping-basket',
-                'link' => '#',
+                'link' => 'skill.index',
             ],
             [
                 'label' => 'Payment',
                 'icon' => 'fas fa-cash-register',
-                'link' => '#',
+                'link' => 'skill.index',
             ],
         ];
     }

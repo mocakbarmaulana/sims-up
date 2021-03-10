@@ -2,13 +2,19 @@
 
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
-class Teacher extends Model
+class Teacher extends Authenticatable
 {
     use HasFactory;
+    use Notifiable;
+
+    protected $guarded = [];
 
     protected $fillable = ['name', 'email', 'address', 'password', 'status'];
 

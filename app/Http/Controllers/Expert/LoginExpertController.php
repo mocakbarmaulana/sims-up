@@ -20,7 +20,6 @@ class LoginExpertController extends Controller
         
         // Inputan yg diambil
         $credentials = $request->only('email', 'password');
-        $credentials['status'] = 1;
 
         if (Auth::guard('expert')->attempt($credentials)) {
             // Jika berhasil login
@@ -31,5 +30,10 @@ class LoginExpertController extends Controller
         }
         // Jika Gagal
         return redirect()->back()->with('error', 'email / password tidak cocok');
+    }
+
+    public function logout(){
+        Auth::guard('expert')->logout();
+        return redirect(route('expert.login'));
     }
 }

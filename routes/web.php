@@ -31,14 +31,16 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function(){
 });
 
 
-// Expert Route
+// Expert Route Login
 Route::group(['prefix' => 'expert', 'namespace' => 'expert'], function(){
     Route::get('/login', [App\Http\Controllers\Expert\LoginExpertController::class, 'index'])->name('expert.login');
     Route::post('/login', [App\Http\Controllers\Expert\LoginExpertController::class, 'authenticate'])->name('expert.login_proses');
 });
 
+// Expert Route
 Route::group(['prefix' => 'expert', 'middleware' => 'expert'], function(){
-    Route::get('/classes', [App\Http\Controllers\Expert\ClassController::class, 'index'])->name('expert.class');
+    Route::get('/class', [App\Http\Controllers\Expert\ClassController::class, 'index'])->name('expert.class');
+    Route::get('/logout', [App\Http\Controllers\Expert\LoginExpertController::class, 'logout'])->name('expert.logout');
 });
 
 // Logout

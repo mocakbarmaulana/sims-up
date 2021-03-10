@@ -14,7 +14,8 @@ class ClassController extends Controller
      */
     public function index()
     {
-        return 'nice';
+        $active = "Class";
+        return view('expert.class.class', compact('active'));
     }
 
     /**

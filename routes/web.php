@@ -41,7 +41,9 @@ Route::group(['prefix' => 'expert', 'namespace' => 'expert'], function(){
 Route::group(['prefix' => 'expert', 'middleware' => 'expert'], function(){
     Route::get('/class', [App\Http\Controllers\Expert\ClassController::class, 'index'])->name('expert.class');
     Route::get('/class/create', [App\Http\Controllers\Expert\ClassController::class, 'create'])->name('expert.class.create');
-    Route::post('/class/store', [App\Http\Controllers\Expert\ClassController::class, 'store'])->name('exper.class.store');
+    Route::get('/class/edit/{id}', [App\Http\Controllers\Expert\ClassController::class, 'edit'])->name('expert.class.edit');
+    Route::put('/class/update/{id}', [App\Http\Controllers\Expert\ClassController::class, 'update'])->name('expert.class.update');
+    Route::post('/class/store', [App\Http\Controllers\Expert\ClassController::class, 'store'])->name('expert.class.store');
 
     Route::get('/logout', [App\Http\Controllers\Expert\LoginExpertController::class, 'logout'])->name('expert.logout');
 });

@@ -89,7 +89,11 @@ class ClassController extends Controller
      */
     public function edit($id)
     {
-        //
+        $active = "Class";
+        $course = Course::find($id);
+        $skills = Skill::all();
+
+        return view('expert.class.edit', compact('active', 'skills', 'course'));
     }
 
     /**
@@ -101,7 +105,29 @@ class ClassController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->skill);
+        $this->validate($request, [
+            'name' => 'required|max:150|unique:courses,name,'.$id,
+            'description' => 'required|string',
+            'price' => 'required|integer',
+            'kuota' => 'required|integer',
+            'skill' => 'required|integer',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+        ]);
+
+        $course = Course::find($id);
+
+        $image = $this->uploadImage($request->image, $course->image_course);
+
+        $course->name = $request->name;
+        $course->image_course = $image;
+        $course->description = $request->description;
+        $course->quota_student = $request->kuota;
+        $course->price = $request->price;
+        $course->skill_id = $request->skill;
+        $course->save();
+
+        return redirect(route('expert.class.edit', $id))->with('success', 'Course berhasil diperbaharui');
     }
 
     /**
@@ -130,7 +156,7 @@ class ClassController extends Controller
             );
 
             if ($imageDB != null) {
-                Storage::delete('/public/assets/images/course'.$imageDB);
+                Storage::delete('/public/assets/images/course/'.$imageDB);
             }
 
         }

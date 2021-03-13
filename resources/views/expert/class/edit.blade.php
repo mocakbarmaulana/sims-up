@@ -12,13 +12,19 @@
     </ol>
 </nav>
 <div class="mx-3 p-2 bg-light">
+    @if (session('success'))
+    <div class="alert alert-success" role="alert">
+        {{session('success')}}
+    </div>
+    @endif
     <div class="row">
         <div class="col">
-            <form action="{{route('expert.class.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('expert.class.update', $course->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="text-center">
-                    <img src="{{asset('assets/images/no-image.png')}}" class="img-fluid image-preview"
-                        style="min-height: 500px" alt="no-image">
+                    <img src="{{asset('storage/assets/images/course/'.$course->image_course)}}"
+                        class="img-fluid image-preview" style="min-height: 500px" alt="no-image">
                 </div>
                 <div class="form-group my-4">
                     <label for="customFile">Uplod Image</label>
@@ -38,7 +44,7 @@
                 @error('name')
                 <span class="text-danger text-sm">*{{$message}}</span>
                 @enderror
-                <input type="text" class="form-control" id="nameCourse" name="name" value="{{old('name')}}">
+                <input type="text" class="form-control" id="nameCourse" name="name" value="{{$course->name}}">
             </div>
             <div class="form-group">
                 <label for="descriptionCourse">Description</label>
@@ -46,21 +52,22 @@
                 <span class="text-danger text-sm">*{{$message}}</span>
                 @enderror
                 <textarea class="form-control" id="descriptionCourse" rows="5"
-                    name="description">{{old('description')}}</textarea>
+                    name="description">{{$course->description}}</textarea>
             </div>
             <div class="form-group">
                 <label for="priceCourse">Price Course</label>
                 @error('price')
                 <span class="text-danger text-sm">*{{$message}}</span>
                 @enderror
-                <input type="number" class="form-control" id="priceCourse" name="price" value="{{old('price')}}">
+                <input type="number" class="form-control" id="priceCourse" name="price" value="{{$course->price}}">
             </div>
             <div class="form-group">
                 <label for="kuotaCourse">Kuota Course</label>
                 @error('kuota')
                 <span class="text-danger text-sm">*{{$message}}</span>
                 @enderror
-                <input type="number" class="form-control" id="kuotaCourse" name="kuota" value="{{old('kuota')}}">
+                <input type="number" class="form-control" id="kuotaCourse" name="kuota"
+                    value="{{$course->quota_student}}">
             </div>
             <div class="form-group">
                 @error('skill')
@@ -74,12 +81,14 @@
                     <select class="custom-select" id="inputGroupSelect01" name="skill">
                         <option selected>Choose...</option>
                         @foreach ($skills as $skill)
-                        <option value="{{$skill->id}}">{{$skill->name}}</option>
+                        <option value="{{$skill->id}}" {{($course->skill_id === $skill->id) ? 'selected' : ''}}>
+                            {{$skill->name}}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
-            <div class="text-right mt-4">
+            <div class="d-flex jusity-content-between mt-4">
+                <button type="submit" class="btn btn-outline-danger">Delete</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
             </form>
@@ -104,10 +113,8 @@ console.log(reader);
 
 reader.onload = function(e){
 $(".image-preview").attr('src', e.target.result);
-{{-- console.log(e); --}}
 }
 
 reader.readAsDataURL(input[0].files[0]);
-{{-- console.log(input[0].files[0]); --}}
 }
 @endsection

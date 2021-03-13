@@ -87,17 +87,44 @@
                     </select>
                 </div>
             </div>
-            <div class="d-flex jusity-content-between mt-4">
-                <button type="submit" class="btn btn-outline-danger">Delete</button>
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-outline-danger btn-delete-course" data-idcourse="{{$course->id}}"
+                    data-toggle="modal" data-target="#btnDeleteCourse">Delete</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
             </form>
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="btnDeleteCourse" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center mt-4">
+                <div>
+                    <i class="far fa-times-circle fa-4x text-danger mb-3"></i>
+                    <p><strong>Apakah anda yakin ingin menghapus item ini?</strong></p>
+                </div>
+                <div class="mt-5">
+                    <form action="" class="form-course-delete" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" class="btn btn-outline-secondary mx-3" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger mx-3">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('js')
+$(".btn-delete-course").on("click", function(){
+const id = $(this)[0].dataset.idcourse;
+$(".form-course-delete").attr('action', `/expert/class/delete/${id}`)
+});
 
 $("#customFile").change(function(){
 const name = $(this.files[0])[0].name;

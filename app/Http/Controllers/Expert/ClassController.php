@@ -138,7 +138,9 @@ class ClassController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Course::destroy($id);
+
+        return redirect(route('expert.class'))->with('success', 'Course berhasil dihapus');
     }
 
 

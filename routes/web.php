@@ -40,6 +40,9 @@ Route::group(['prefix' => 'expert', 'namespace' => 'expert'], function(){
 // Expert Route
 Route::group(['prefix' => 'expert', 'middleware' => 'expert'], function(){
     Route::get('/class', [App\Http\Controllers\Expert\ClassController::class, 'index'])->name('expert.class');
+    Route::get('/class/create', [App\Http\Controllers\Expert\ClassController::class, 'create'])->name('expert.class.create');
+    Route::post('/class/store', [App\Http\Controllers\Expert\ClassController::class, 'store'])->name('exper.class.store');
+
     Route::get('/logout', [App\Http\Controllers\Expert\LoginExpertController::class, 'logout'])->name('expert.logout');
 });
 

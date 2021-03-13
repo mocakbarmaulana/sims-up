@@ -15,7 +15,7 @@
 
             @foreach ($menus as $menu)
             <li class="nav-item">
-                <a href="#" class="nav-link {{$isActive($menu['label']) ? 'active' : ''}} ">
+                <a href="{{route($menu['link'])}}" class="nav-link {{$isActive($menu['label']) ? 'active' : ''}} ">
                     <i class="nav-icon {{$menu['icon']}}"></i>
                     <p>{{$menu['label']}}</p>
                 </a>

@@ -40,6 +40,7 @@ class expertSidebar extends Component
             [
                 'label' => 'Class',
                 'icon' => 'fab fa-discourse',
+                'link' => 'expert.class',
             ],
         ];
     }

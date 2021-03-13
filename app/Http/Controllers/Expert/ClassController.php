@@ -19,7 +19,9 @@ class ClassController extends Controller
     public function index()
     {
         $active = "Class";
-        return view('expert.class.class', compact('active'));
+        $courses = Course::all();
+
+        return view('expert.class.class', compact('active', 'courses'));
     }
 
     /**

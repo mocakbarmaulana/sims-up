@@ -19,6 +19,26 @@
     </div>
     @endif
     <div class="row">
+        @foreach ($courses as $course)
+        <div class="col-3 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <div class="box-img-class">
+                    <img src="{{asset('storage/assets/images/course/' . $course->image_course)}}" class=""
+                        alt="image-logo" style="width: 100%; height: 100%">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">{{$course->name}}</h5>
+                    <span class="card-text d-block">{{$course->description}}</span>
+                    <span>Harga : IDR.{{ number_format($course->price)}}</span><br>
+                    <span>Kuota : {{$course->quota_student}}</span>
+                </div>
+                <div class="p-4 d-flex justify-content-between">
+                    <a href="#" class="btn btn-outline-success">Edit</a>
+                    <a href="#" class="btn btn-success">Detail</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
         <div class="col-3 d-flex justify-content-center">
             <div class="card" style="width: 18rem;">
                 <div class="box-img-class d-flex justify-content-center align-items-center">
@@ -47,20 +67,6 @@
                             <p class="font-weight-bold py-2">Tambah Course</p>
                         </a>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-3 d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top img-class" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-                <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
                 </div>
             </div>
         </div>

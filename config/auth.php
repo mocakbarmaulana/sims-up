@@ -46,6 +46,11 @@ return [
             'provider' => 'experts',
         ],
 
+        'member' => [
+            'driver' => 'session',
+            'provider' => 'members',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -79,7 +84,12 @@ return [
         'experts' => [
             'driver' => 'eloquent',
             'model' => App\Models\Teacher::class,
-        ]
+        ],
+
+        'members' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Student::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',

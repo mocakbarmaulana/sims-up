@@ -31,7 +31,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="{{route('member.logout')}}">Log Out</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">

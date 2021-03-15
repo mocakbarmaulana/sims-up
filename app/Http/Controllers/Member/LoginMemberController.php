@@ -57,4 +57,10 @@ class LoginMemberController extends Controller
         // Jika Gagal
         return redirect()->back()->with('error', 'email / password tidak cocok');
     }
+
+    public function logout(){
+        Auth::guard('member')->logout();
+
+        return redirect(route('home'));
+    }
 }

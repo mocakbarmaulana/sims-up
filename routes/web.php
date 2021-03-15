@@ -24,6 +24,7 @@ Route::group(['prefix' => 'member', 'namespace' => 'member'], function(){
     Route::get('/register', [App\Http\Controllers\Member\LoginMemberController::class, 'register'])->name('member.register');
     Route::post('/login', [App\Http\Controllers\Member\LoginMemberController::class, 'authenticate'])->name('member.login_proses');
     Route::post('/register', [App\Http\Controllers\Member\LoginMemberController::class, 'memberRegister'])->name('member.register_proses');
+    Route::get('/logout', [App\Http\Controllers\Member\LoginMemberController::class, 'logout'])->name('member.logout');
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

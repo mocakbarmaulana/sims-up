@@ -44,7 +44,7 @@
                         <a href="{{route('member.login')}}" class="nav-link">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Register</a>
+                        <a href="{{route('member.register')}}" class="nav-link">Register</a>
                     </li>
                     @endif
 

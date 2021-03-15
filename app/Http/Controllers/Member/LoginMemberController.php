@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,6 +11,31 @@ class LoginMemberController extends Controller
 {
     public function login(){
         return view('member.login');
+    }
+
+    public function register(){
+        return view('member.register');
+    }
+
+    public function memberRegister(Request $request){
+        $this->validate($request, [
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:students',
+            'address' => 'required|string|max:200',
+            'phone_number' => 'required|integer',
+            'password' => 'required|min:8|confirmed|',
+        ]);
+
+        $student = new Student();
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->address = $request->address;
+        $student->phone_number = $request->phone_number;
+        $student->password = $request->password;
+        $student->status = true;
+        $student->save();
+
+        return redirect(route('home'));
     }
 
     public function authenticate(Request $request){

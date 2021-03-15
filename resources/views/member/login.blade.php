@@ -14,23 +14,39 @@
 <body>
 
     <div class="container d-flex align-items-center justify-content-center" style="height: 100vh">
-        <div class="card" style="height: 250px; width: 20rem">
+        <div class="card py-5" style="width: 25rem">
             <div class="card-title text-center">
                 <h1>Sims Up</h1>
             </div>
             <div class="card-body">
-                <form action="" method="POST">
+                @if (session('error'))
+                <div class="alert alert-danger text-center" role="alert">
+                    {{session('error')}}
+                </div>
+                @endif
+                <form action="{{route('member.login_proses')}}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror"
+                            placeholder="Email" name="email">
+                        @error('email')
+                        <div class="invalid-feedback" role="alert">
+                            <strong>*{{$message}}</strong>
+                        </div>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" placeholder="Password" name="password">
+                        @error('password')
+                        <div class="invalid-feedback" role="alert">
+                            <strong>*{{$message}}</strong>
+                        </div>
+                        @enderror
                     </div>
                     <div class="form-group d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Login</button>
                         <div class="d-flex align-items-center">
-                            <span>Register?</span>
+                            <a href="{{route('member.register')}}">Register?</a>
                         </div>
                     </div>
                 </form>

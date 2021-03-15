@@ -14,13 +14,16 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', [App\Http\Controllers\FrontController::class, 'home']);
+Route::get('/', [App\Http\Controllers\FrontController::class, 'home'])->name('home');
 
 Auth::routes();
 
 // Member Route
 Route::group(['prefix' => 'member', 'namespace' => 'member'], function(){
     Route::get('/login', [App\Http\Controllers\Member\LoginMemberController::class, 'login'])->name('member.login');
+    Route::get('/register', [App\Http\Controllers\Member\LoginMemberController::class, 'register'])->name('member.register');
+    Route::post('/login', [App\Http\Controllers\Member\LoginMemberController::class, 'authenticate'])->name('member.login_proses');
+    Route::post('/register', [App\Http\Controllers\Member\LoginMemberController::class, 'memberRegister'])->name('member.register_proses');
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

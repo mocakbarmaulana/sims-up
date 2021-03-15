@@ -20,7 +20,7 @@ class SkillController extends Controller
         $skills = Skill::orderBy('name', 'ASC')->paginate(10);
 
         return view('admin.skill.skill', compact('active', 'skills'));
-        
+
     }
 
     /**
@@ -56,7 +56,7 @@ class SkillController extends Controller
         ]);
 
             return redirect(route('skill.index'))->with('success', 'Skill baru berhasil ditambahkan!');
-        
+
     }
 
     /**
@@ -99,7 +99,7 @@ class SkillController extends Controller
             'description' => 'required|max:200',
             'status' => 'required',
         ]);
-        
+
         $skill = Skill::find($id);
         $skill->name = $request->skill;
         $skill->description = $request->description;
@@ -117,8 +117,14 @@ class SkillController extends Controller
      */
     public function destroy($id)
     {
-       Skill::destroy($id);
+        $course = Skill::withCount(['courses'])->find($id);
 
-       return redirect(route('skill.index'))->with('success', 'Skill berhasil dihapus');
+        if($course->courses_count == 0){
+            $course->delete();
+
+            return redirect(route('skill.index'))->with('success', 'Skill berhasil dihapus');
+        }
+
+       return redirect()->back()->with('error', 'Skill sedang digunakan');
     }
 }

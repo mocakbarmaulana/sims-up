@@ -33,7 +33,7 @@
                         <td>{{ $course->name }}</td>
                         <td>{{ $course->teacher->name}}</td>
                         <td>
-                            <a href="#" class="btn btn-primary btn-sm">Detail</a>
+                            <a href="{{route('course.show', $course->id)}}" class="btn btn-primary btn-sm">Detail</a>
                         </td>
                     </tr>
                     @endforeach

@@ -15,4 +15,9 @@ class CourseController extends Controller
 
         return view('admin.course.index', compact('active', 'courses'));
     }
+
+    public function show($id){
+        $active = 'Course';
+        return view('admin.course.show', compact('active'));
+    }
 }

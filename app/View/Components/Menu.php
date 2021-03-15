@@ -38,9 +38,9 @@ class Menu extends Component
                 'link' => 'skill.index',
             ],
             [
-                'label' => 'Class',
+                'label' => 'Course',
                 'icon' => 'fab fa-discourse',
-                'link' => 'skill.index',
+                'link' => 'course.index',
             ],
             [
                 'label' => 'Learner',

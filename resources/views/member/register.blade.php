@@ -16,7 +16,7 @@
     <div class="container d-flex align-items-center justify-content-center" style="height: 100vh">
         <div class="card py-5" style=" width: 28rem">
             <div class="card-title text-center">
-                <h1>Sims Up</h1>
+                <h1><a href="/">Sims Up</a></h1>
             </div>
             <div class="card-body">
                 <form action="{{route('member.register_proses')}}" method="POST">

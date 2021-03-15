@@ -35,6 +35,9 @@ Route::group(['prefix' => 'member', 'namespace' => 'member'], function(){
 Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function(){
     Route::resource('skill', 'App\Http\Controllers\Admin\SkillController');
     Route::resource('teacher', 'App\Http\Controllers\Admin\TeacherController');
+
+    //Course
+    Route::resource('course', 'App\Http\Controllers\Admin\CourseController');
 });
 
 

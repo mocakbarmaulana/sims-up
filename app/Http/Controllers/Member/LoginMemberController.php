@@ -10,10 +10,17 @@ use Illuminate\Support\Facades\Auth;
 class LoginMemberController extends Controller
 {
     public function login(){
+        if (Auth::guard('member')->check()) {
+            return redirect(route('home'));
+        }
         return view('member.login');
     }
 
     public function register(){
+        if (Auth::guard('member')->check()) {
+            return redirect(route('home'));
+        }
+
         return view('member.register');
     }
 

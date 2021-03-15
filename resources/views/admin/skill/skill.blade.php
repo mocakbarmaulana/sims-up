@@ -58,16 +58,16 @@
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">Skill</th>
-                                <th scope="col" class="text-center">Dibuat</th>
+                                {{-- <th scope="col" class="text-center">Dibuat</th> --}}
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($skills as $skill)
                             <tr>
-                                <th scope="row">{{$loop->iteration}}.</th>
+                                <th scope="row">
+                                    {{($skills->currentPage() - 1) * $skills->perPage() + $loop->iteration}}.</th>
                                 <td>{{$skill->name}}</td>
-                                <td class="text-center">{{$skill->created_at->format('d/m/Y')}}</td>
                                 <td class="text-center">
                                     <a href="{{route('skill.edit', $skill->id)}}"
                                         class="btn btn-primary btn-sm">Edit</a>

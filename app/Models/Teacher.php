@@ -24,7 +24,7 @@ class Teacher extends Authenticatable
 
     public function getCutNameAttribute($value){
         if (strlen($value) > 20) {
-            return substr($value,0,20) . '...'; 
+            return substr($value,0,20) . '...';
         } else {
             return $value;
         }
@@ -36,5 +36,9 @@ class Teacher extends Authenticatable
         } else {
             return "fas fa-times-circle text-danger";
         }
+    }
+
+    public function courses(){
+        return $this->hasMany(Course::class);
     }
 }

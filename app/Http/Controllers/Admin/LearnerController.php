@@ -51,14 +51,14 @@ class LearnerController extends Controller
             'password' => 'required|confirmed|min:8',
         ]);
 
-        $stuent = new Student();
-        $stuent->name = $request->name;
-        $stuent->email = $request->email;
-        $stuent->phone_number = $request->phone_number;
-        $stuent->address = $request->address;
-        $stuent->password = $request->password;
-        $stuent->status = true;
-        $stuent->save();
+        $student = new Student();
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->phone_number = $request->phone_number;
+        $student->address = $request->address;
+        $student->password = $request->password;
+        $student->status = true;
+        $student->save();
 
         return redirect()->back()->with('success', 'Learner baru berhasil ditambahkan');
     }
@@ -82,7 +82,10 @@ class LearnerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $active = 'Learner';
+        $student = Student::find($id);
+
+        return view('admin.learner.edit', compact('active', 'student'));
     }
 
     /**
@@ -94,7 +97,25 @@ class LearnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:150',
+            'email' => 'required|unique:students,email,' . $id,
+            'phone_number' => 'required|integer',
+            'address' => 'required|string|max:250',
+            'password' => 'nullable|confirmed|min:8',
+        ]);
+
+        $student = Student::find($id);
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->phone_number = $request->phone_number;
+        $student->address = $request->address;
+        if(!empty($request->password)) {
+            $student->password = $request->password;
+        };
+        $student->save();
+
+        return redirect()->back()->with('success', 'Learner berhasil diupdate');
     }
 
     /**

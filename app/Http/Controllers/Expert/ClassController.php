@@ -19,7 +19,10 @@ class ClassController extends Controller
     public function index()
     {
         $active = "Class";
-        $courses = Course::all();
+
+        $id = Auth::guard('expert')->id();
+
+        $courses = Course::all()->where('teacher_id', $id);
 
         return view('expert.class.class', compact('active', 'courses'));
     }
@@ -89,8 +92,15 @@ class ClassController extends Controller
      */
     public function edit($id)
     {
+        $idExpert = Auth::guard('expert')->id();
+        $courses = Course::all();
+
+        if(empty($courses->where('teacher_id', $idExpert)->where('id', $id)->count())){
+            return redirect(route('expert.class'));
+        }
+
         $active = "Class";
-        $course = Course::find($id);
+        $course = $courses->find($id);
         $skills = Skill::all();
 
         return view('expert.class.edit', compact('active', 'skills', 'course'));

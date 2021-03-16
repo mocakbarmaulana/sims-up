@@ -48,13 +48,17 @@ class ClassController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->time);
+
         $this->validate($request, [
             'name' => 'required|unique:courses|max:150',
             'description' => 'required|string',
+            'date' => 'required|date',
+            'time' => 'required|string',
             'price' => 'required|integer',
             'kuota' => 'required|integer',
             'skill' => 'required|integer',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $image = $this->uploadImage($request->image, null);
@@ -66,6 +70,8 @@ class ClassController extends Controller
         $course->description = $request->description;
         $course->quota_student = $request->kuota;
         $course->price = $request->price;
+        $course->event_date = $request->date;
+        $course->event_time = $request->time;
         $course->skill_id = $request->skill;
         $course->status = true;
         $course->save();

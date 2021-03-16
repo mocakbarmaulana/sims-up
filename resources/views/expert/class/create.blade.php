@@ -62,11 +62,27 @@
                 @enderror
                 <input type="number" class="form-control" id="kuotaCourse" name="kuota" value="{{old('kuota')}}">
             </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Event Date</label>
+                    @error('date')
+                    <span class="text-danger text-sm">*{{$message}}</span>
+                    @enderror
+                    <input type="date" name="date" class="form-control" value="{{old('date')}}">
+                </div>
+                <div class="form-group col">
+                    <label>Event Time</label>
+                    @error('time')
+                    <span class="text-danger text-sm">*{{$message}}</span>
+                    @enderror
+                    <input type="time" name="time" class="form-control" placeholder="Attended" value="{{old('time')}}">
+                </div>
+            </div>
             <div class="form-group">
+                <label for="achivementSkillCourse">Achivement Skill Course</label>
                 @error('skill')
                 <span class="text-danger text-sm">*{{$message}}</span>
                 @enderror
-                <label for="achivementSkillCourse">Achivement Skill Course</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Options</label>

@@ -20,8 +20,8 @@
     @endif
     <div class="row">
         <div class="col-3 d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-                <div class="d-flex align-items-center justify-content-center" style="min-height: 200px">
+            <div class="card py-5" style="width: 18rem; ">
+                <div class="d-flex align-items-center justify-content-center" style="height: 100%">
                     <div class="text-center">
                         <a href="{{route('expert.class.create')}}" class="text-success"><i
                                 class="fas fa-plus-circle fa-9x"></i>

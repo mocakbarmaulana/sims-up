@@ -100,6 +100,12 @@ class SkillController extends Controller
             'status' => 'required',
         ]);
 
+        $course = Skill::withCount(['courses'])->find($id);
+
+        if($course->courses_count != 0 && $request->status == 0){
+            return redirect()->back()->with('error', 'Skill sedang digunakan');
+        }
+
         $skill = Skill::find($id);
         $skill->name = $request->skill;
         $skill->description = $request->description;

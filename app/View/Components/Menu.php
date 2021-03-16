@@ -45,7 +45,7 @@ class Menu extends Component
             [
                 'label' => 'Learner',
                 'icon' => 'fas fa-user-graduate',
-                'link' => 'skill.index',
+                'link' => 'learner.index',
             ],
             [
                 'label' => 'Teacher',

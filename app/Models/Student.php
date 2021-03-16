@@ -16,4 +16,12 @@ class Student extends Authenticatable
     public function setPasswordAttribute($value){
         $this->attributes['password'] = Hash::make($value);
     }
+
+    public function getCutNameAttribute($value){
+        if (strlen($value) > 20) {
+            return substr($value,0,30) . '...';
+        } else {
+            return $value;
+        }
+    }
 }

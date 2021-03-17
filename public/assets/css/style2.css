@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #cbdcfd;
+}
+
+/* Footer */
+footer {
+    background-color: #353750;
+    color: #fff;
+}
+
+.copyright {
+    position: relative;
+}
+
+.copyright::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+}

@@ -28,16 +28,16 @@ class LoginMemberController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:100',
             'email' => 'required|email|unique:students',
-            'address' => 'required|string|max:200',
-            'phone_number' => 'required|integer',
+            // 'address' => 'required|string|max:200',
+            // 'phone_number' => 'required|integer',
             'password' => 'required|min:8|confirmed|',
         ]);
 
         $student = new Student();
         $student->name = $request->name;
         $student->email = $request->email;
-        $student->address = $request->address;
-        $student->phone_number = $request->phone_number;
+        $student->address = "";
+        $student->phone_number = "";
         $student->password = $request->password;
         $student->status = true;
         $student->save();

@@ -48,17 +48,16 @@
                     </div>
                     <div class="form-group mt-4">
                         <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        {{-- <div class="d-flex align-items-center">
-                            <a href="{{route('member.register')}}">Register?</a>
-                    </div> --}}
+                    </div>
             </div>
+            </form>
         </div>
-        </form>
-    </div>
 
-    <div class="mt-4">
-        <p>Not a User? <a href="#" class="text-dark link-hover"><strong>Sign Up</strong></a></p>
-    </div>
+        <div class="mt-4">
+            <p>Not a User? <a href="{{route('member.register')}}" class="text-dark link-hover"><strong>Sign
+                        Up</strong></a>
+            </p>
+        </div>
     </div>
     </div>
 

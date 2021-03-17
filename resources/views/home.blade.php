@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('head')
+<link rel="stylesheet" href="{{asset('assets/css/style2.css')}}">
+@endsection
+
 @section('content')
 <div class="container">
     <header>
@@ -52,12 +56,40 @@
             </div>
         </nav>
     </header>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron p-0 pt-5 pb-3">
         <div class="container">
-            <h1 class="display-4">Fluid jumbotron</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <h1 class="display-5">Reskill & Upskill:</h1>
+            <h1 class="display-5">Bring out the best in you</h1>
+            <ul class="list-unstyled mt-4">
+                <li>Broaden your professional potential.</li>
+                <li>Deepen your personal horizons.</li>
+                <li>Start a skill-building plan now.</li>
+            </ul>
+            <div style="margin-top: 100px">
+                <a href="#" class="btn btn-warning">Get Started</a>
+                <a href="#" class="btn btn-outline-warning">Learn More</a>
+            </div>
         </div>
     </div>
+
+    <section id="goal">
+        <div class="goal-head"></div>
+        <div class="goal-body">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </section>
+
+    <section id="skill">
+        belum ada
+    </section>
+
+    <section id="course">
+
+    </section>
+
+
     <div class="container">
         <div class="row d-flex justify-content-around">
             @foreach ($courses as $course)
@@ -75,42 +107,6 @@
         </div>
     </div>
 
-    <footer>
-        <div class="row">
-            <div class="col">
-                <h1>2020</h1>
-                <ul class="list-unstyled">
-                    <li>2020 Copyright</li>
-                </ul>
-            </div>
-            <div class="col">
-                <ul>
-                    <li class="my-3">Cras justo odio</li>
-                    <li class="my-3">Dapibus ac facilisis in</li>
-                    <li class="my-3">Morbi leo risus</li>
-                    <li class="my-3">Porta ac consectetur ac</li>
-                    <li class="my-3">Vestibulum at eros</li>
-                </ul>
-            </div>
-            <div class="col">
-                <ul>
-                    <li class="my-3"><a href="{{route('expert.login')}}">Expert</a></li>
-                    <li class="my-3">Dapibus ac facilisis in</li>
-                    <li class="my-3">Morbi leo risus</li>
-                    <li class="my-3">Porta ac consectetur ac</li>
-                    <li class="my-3">Vestibulum at eros</li>
-                </ul>
-            </div>
-            <div class="col">
-                <ul>
-                    <li class="my-3">Cras justo odio</li>
-                    <li class="my-3">Dapibus ac facilisis in</li>
-                    <li class="my-3">Morbi leo risus</li>
-                    <li class="my-3">Porta ac consectetur ac</li>
-                    <li class="my-3">Vestibulum at eros</li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+
 </div>
 @endsection

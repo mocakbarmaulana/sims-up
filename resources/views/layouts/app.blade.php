@@ -21,8 +21,13 @@
     @yield('content')
 
     @include('layouts.modules.mainfooter')
+
     {{-- Script JS --}}
+    <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script>
+        @yield('js')
+    </script>
 </body>
 
 </html>

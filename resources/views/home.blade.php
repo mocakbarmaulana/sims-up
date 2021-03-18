@@ -161,75 +161,9 @@
                         </div>
                     </div>
                     @endforeach
-
-                    {{-- <div class="course-content col p-3 mx-3 rounded">
-                        <div class="course-image">
-                            <img src="{{asset('assets/images/no-image.png')}}" class="img-thumbnail" alt="img-course">
-                </div>
-                <div class="d-flex pt-2">
-                    <div class="course-info">
-                        <h6 style="height: 90px"><strong>Trello Bikin Rencana Makin Lancar Jaya Jaya Jaya
-                                Jaya</strong></h6>
-                        <div class="course-date">
-                            <span>Dinar Nugroho P</span>
-                            <strong>12/08/2021</strong>
-                        </div>
-                    </div>
-                    <div class="course-btn d-flex flex-column justify-content-between text-center" style="width: 100px">
-                        <p>
-                            seats <span class="badge badge-warning">150 / 150</span>
-                        </p>
-                        <a href="#" class="btn btn-primary btn-sm">Order</a>
-                    </div>
                 </div>
             </div>
-
-            <div class="course-content col p-3 mx-3 rounded">
-                <div class="course-image">
-                    <img src="{{asset('assets/images/no-image.png')}}" class="img-thumbnail" alt="img-course">
-                </div>
-                <div class="d-flex pt-2">
-                    <div class="course-info">
-                        <h6 style="height: 90px"><strong>Trello Bikin Rencana Makin Lancar Jaya Jaya Jaya
-                                Jaya</strong></h6>
-                        <div class="course-date">
-                            <span>Dinar Nugroho P</span>
-                            <strong>12/08/2021</strong>
-                        </div>
-                    </div>
-                    <div class="course-btn d-flex flex-column justify-content-between text-center" style="width: 100px">
-                        <p>
-                            seats <span class="badge badge-warning">150 / 150</span>
-                        </p>
-                        <a href="#" class="btn btn-primary btn-sm">Order</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="course-content col p-3 mx-3 rounded">
-                <div class="course-image">
-                    <img src="{{asset('assets/images/no-image.png')}}" class="img-thumbnail" alt="img-course">
-                </div>
-                <div class="d-flex pt-2">
-                    <div class="course-info">
-                        <h6 style="height: 90px"><strong>Trello Bikin Rencana Makin Lancar Jaya Jaya Jaya
-                                Jaya</strong></h6>
-                        <div class="course-date">
-                            <span>Dinar Nugroho P</span>
-                            <strong>12/08/2021</strong>
-                        </div>
-                    </div>
-                    <div class="course-btn d-flex flex-column justify-content-between text-center" style="width: 100px">
-                        <p>
-                            seats <span class="badge badge-warning">150 / 150</span>
-                        </p>
-                        <a href="#" class="btn btn-primary btn-sm">Order</a>
-                    </div>
-                </div>
-            </div> --}}
         </div>
-    </div>
-    </div>
     </div>
 </section>
 
@@ -278,21 +212,8 @@
     </div>
 </section>
 
+@endsection
 
-{{-- <div class="container" style="height: 100px">
-    <div class="row d-flex justify-content-around">
-        @foreach ($courses as $course)
-        <div class="col-3">
-            <div class="card" style="width: 18rem;">
-                <img src="{{asset('assets/images/no-image.png')}}" class="card-img-top" alt="...">
-<div class="card-body">
-    <h5 class="card-title">{{$course->name}}</h5>
-    <p class="card-text">{{$course->description}}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-</div>
-</div>
-</div>
-@endforeach
-</div>
-</div> --}}
+@section('js')
+
 @endsection

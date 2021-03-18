@@ -154,7 +154,11 @@ class ClassController extends Controller
      */
     public function destroy($id)
     {
-        Course::destroy($id);
+        $course = Course::find($id);
+
+        Storage::delete('/public/assets/images/course/'.$course->image_course);
+
+        $course->delete();
 
         return redirect(route('expert.class'))->with('success', 'Course berhasil dihapus');
     }

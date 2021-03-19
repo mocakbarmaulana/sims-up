@@ -11,9 +11,10 @@ class mainSidebar extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $active;
+    public function __construct($active)
     {
-        //
+        $this->active = $active;
     }
 
     /**
@@ -23,7 +24,8 @@ class mainSidebar extends Component
      */
     public function render()
     {
-        return view('components.main-sidebar');
+        $active = $this->active;
+        return view('components.main-sidebar', compact('active'));
     }
 
     public function menus(){
@@ -38,5 +40,9 @@ class mainSidebar extends Component
                 'label' => 'Logout',
             ],
         ];
+    }
+
+    public function isActive($label){
+        return $label == $this->active;
     }
 }

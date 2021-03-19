@@ -24,4 +24,8 @@ class Student extends Authenticatable
             return $value;
         }
     }
+
+    public function orders(){
+        $this->hasMany(Order::class);
+    }
 }

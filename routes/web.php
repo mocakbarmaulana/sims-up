@@ -28,9 +28,7 @@ Route::group(['prefix' => 'member', 'namespace' => 'member'], function(){
     Route::post('/register', [App\Http\Controllers\Member\LoginMemberController::class, 'memberRegister'])->name('member.register_proses');
     Route::get('/logout', [App\Http\Controllers\Member\LoginMemberController::class, 'logout'])->name('member.logout');
 
-    Route::get('/account', function(){
-        return view('layouts.member');
-    });
+    Route::get('/order', [App\Http\Controllers\Member\MemberController::class, 'getOrder'])->name('member.getorder');
 
     Route::post('/order/{id}', [App\Http\Controllers\Member\MemberController::class, 'setOrder'])->name('member.setorder');
 

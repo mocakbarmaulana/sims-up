@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Akun</title>
-
     {{-- Bootstrap --}}
     <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
 
@@ -15,6 +13,8 @@
 
     {{-- FontAwesome --}}
     <link rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
+
+    @yield('head')
 </head>
 
 <body>
@@ -59,12 +59,10 @@
     <div class="container">
         <div class="row justify-content-between py-5">
             <div class="sidebar col-2 p-0 rounded">
-                <x-main-sidebar />
+                <x-main-sidebar :active="$active" />
             </div>
             <div class="main col-9 rounded">
-                <div class="container">
-                    <h1>Oke</h1>
-                </div>
+                @yield('content')
             </div>
         </div>
     </div>
@@ -74,7 +72,7 @@
 
     {{-- Script js --}}
     <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
-
+    @yield('js')
 </body>
 
 </html>

@@ -1,9 +1,10 @@
-<div class="text-center">
+<div class="text-center sidebar-content rounded">
     @foreach ($menus as $menu)
     <div>
-        <a href="#" class="py-2 d-block">{{$menu['label']}}</a>
+        <a href="#" class="py-2 d-block {{$isActive($menu['label']) ? 'active' : '' }}">{{$menu['label']}}</a>
     </div>
     @endforeach
+
     {{-- <div>
         <a href="#" class="py-2 d-block active">Course</a>
     </div>

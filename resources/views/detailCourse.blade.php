@@ -59,6 +59,7 @@
                 <div class="mt-5">
                     <form action="" class="form-order-course" method="post">
                         @csrf
+                        <input type="hidden" name="price" value="{{$course->price}}">
                         <button type="button" class="btn btn-outline-secondary mx-3" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success mx-3">Order</button>
                     </form>

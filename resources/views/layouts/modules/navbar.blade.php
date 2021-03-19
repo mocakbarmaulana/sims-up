@@ -20,7 +20,7 @@
 
                 @if (Auth::guard('member')->check())
                 <li class="nav-item">
-                    <a class="nav-link btn btn-warning btn-sm mx-4" href="#">Dashboard</a>
+                    <a class="nav-link btn btn-warning btn-sm mx-4" href="{{route('member.getorder')}}">Dashboard</a>
                 </li>
                 @else
                 <li class="nav-item">

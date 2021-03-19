@@ -18,4 +18,12 @@ class Course extends Model
     public function skill(){
         return $this->belongsTo(Skill::class);
     }
+
+    // public function orders(){
+    //     return $this->belongsTo(Order::class, 'course_id');
+    // }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
 }

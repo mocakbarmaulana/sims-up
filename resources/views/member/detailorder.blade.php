@@ -69,26 +69,48 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-6">
-                        <form>
+                        <form action="{{route('member.payment')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$order->id}}">
                             <div class="form-group">
                                 <label>Invoice</label>
                                 <input class="form-control" type="text" placeholder="{{$order->invoice}}" readonly>
                             </div>
-                            <label for="name">Name</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                                <label for="name">Name</label>
+                                @error('name')
+                                <small class="text-danger">*{{$message}}</small>
+                                @enderror
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                                    id="name" value="{{old('name')}}">
                             </div>
                             <div class="form-group">
                                 <label for="numberBank">Number Bank</label>
-                                <input type="text" class="form-control" id="numberBank">
+                                @error('number_bank')
+                                <small class="text-danger">*{{$message}}</small>
+                                @enderror
+                                <input type="number" class="form-control @error('number_bank') is-invalid @enderror"
+                                    name="number_bank" id="numberBank" value="{{old('number_bank')}}">
                             </div>
                             <div class="form-group">
                                 <label for="nameBank">Name Bank</label>
-                                <input type="text" class="form-control" id="nameBank">
+                                @error('name_bank')
+                                <small class="text-danger">*{{$message}}</small>
+                                @enderror
+                                <input type="text" class="form-control @error('name_bank') is-invalid @enderror"
+                                    name="name_bank" id="nameBank" value="{{old('name_bank')}}">
                             </div>
-                            <div class="form-group">
-                                <label for="dateTransfer">Date Transfer</label>
-                                <input type="date" class="form-control" id="dateTransfer">
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="amount">Amount</label>
+                                    <input type="number" class="form-control @error('amount') is-invalid @enderror"
+                                        name="amount" id="amount" value="{{old('amount')}}">
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="dateTransfer">Date Transfer</label>
+                                    <input type="date" class="form-control @error('date_transfer') is-invalid @enderror"
+                                        name="date_transfer" id="dateTransfer" value="{{old('date_transfer')}}">
+                                </div>
                             </div>
                     </div>
                     <div class="col-6">
@@ -96,8 +118,12 @@
                             width="100%" class="image-preview">
                         <div class="form-group mt-4">
                             <label for="imgProve">Image Proove</label>
+                            @error('image')
+                            <small class="text-danger">*{{$message}}</small>
+                            @enderror
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="imgProve" required>
+                                <input type="file" class="custom-file-input @error('image') is-invalid @enderror"
+                                    name="image" id="imgProve">
                                 <label class="custom-file-label image-text" for="imgProve">Choose file...</label>
                             </div>
                         </div>
@@ -106,7 +132,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn bg-green-mint order-filter">Submit</button>
+                <button type="submit" class="btn bg-green-mint order-filter">Submit</button>
                 </form>
             </div>
         </div>

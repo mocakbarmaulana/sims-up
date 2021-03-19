@@ -32,12 +32,15 @@ class mainSidebar extends Component
         return [
             [
                 'label' => 'Course',
+                'link' => 'member.getorder',
             ],
             [
                 'label' => 'Order',
+                'link' => 'member.getorder',
             ],
             [
                 'label' => 'Logout',
+                'link' => 'member.getorder',
             ],
         ];
     }

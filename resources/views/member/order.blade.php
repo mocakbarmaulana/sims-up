@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<div class="py-4">
+<div class="p-4">
     <div class="row mb-3">
         <div class="col d-flex justify-content-center align-items-center">
             <form action="" method="get">
@@ -31,27 +31,27 @@
     <table class="table table-hover">
         <thead class="bg-green-mint">
             <tr>
-                <th scope="col">Invoice</th>
                 <th scope="col">Course</th>
-                <th scope="col">Status</th>
-                <th scope="col">Tanggal</th>
+                <th scope="col" class="text-center">Date</th>
+                <th scope="col" class="text-center">Action</th>
             </tr>
         </thead>
         <tbody>
-
-
             @foreach ($orders as $order)
             <tr>
-                <td>{{$order->invoice}}</td>
-                <td>{{$order->course->name}}</td>
-                <td class="text-center">
+                <td>
                     @if ($order->status == 1)
-                    <i class="far fa-check-circle text-success"></i><br><span>Dibayar</span>
+                    <i class="far fa-check-circle text-success"></i>
                     @else
-                    <i class="far fa-times-circle text-danger"></i><br><span>Belum Dibayar</span>
+                    <i class="far fa-times-circle text-danger"></i>
                     @endif
+                    {{$order->course->name}}
                 </td>
-                <td>{{ date_format($order->created_at,'d/m/Y')}}</td>
+                <td class="text-center">{{ date_format($order->created_at,'d/m/Y')}}</td>
+                <td class="text-center">
+                    <a href="{{route('member.getorderdetail', $order->id)}}"
+                        class="btn btn-sm bg-green-mint order-filter">Detail</a>
+                </td>
             </tr>
             @endforeach
         </tbody>

@@ -61,7 +61,7 @@
             <div class="sidebar col-2 p-0 rounded">
                 <x-main-sidebar :active="$active" />
             </div>
-            <div class="main col-9 rounded">
+            <div class="main col-9 p-0 rounded">
                 @yield('content')
             </div>
         </div>
@@ -71,6 +71,7 @@
 
 
     {{-- Script js --}}
+    <script src="{{asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
     @yield('js')
 </body>

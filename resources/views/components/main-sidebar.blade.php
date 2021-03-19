@@ -1,7 +1,8 @@
 <div class="text-center sidebar-content rounded">
     @foreach ($menus as $menu)
     <div>
-        <a href="#" class="py-2 d-block {{$isActive($menu['label']) ? 'active' : '' }}">{{$menu['label']}}</a>
+        <a href="{{route($menu['link'])}}"
+            class="py-2 d-block {{$isActive($menu['label']) ? 'active' : '' }}">{{$menu['label']}}</a>
     </div>
     @endforeach
 

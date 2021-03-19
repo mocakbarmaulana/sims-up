@@ -14,7 +14,7 @@ use function PHPUnit\Framework\isNull;
 
 class MemberController extends Controller
 {
-    public function getOrder(Request $request){
+    public function getOrderAll(Request $request){
         $active = 'Order';
         $id = Auth::guard('member')->id();
 
@@ -26,10 +26,6 @@ class MemberController extends Controller
                         ->paginate(10);
 
         return view('member.order', compact('active', 'orders'));
-    }
-
-    public function getInvoice(){
-
     }
 
     public function setOrder(Request $request, $id){
@@ -46,6 +42,13 @@ class MemberController extends Controller
         $order->save();
 
         return redirect(route('member.getorder'));
+    }
+
+    public function getOrderDetail($id){
+        $active = 'Order';
+        $order = Order::find($id);
+
+        return view('member.detailorder', compact('active', 'order') );
     }
 
     public function payment(){

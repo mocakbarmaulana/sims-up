@@ -40,7 +40,7 @@ class mainSidebar extends Component
             ],
             [
                 'label' => 'Logout',
-                'link' => 'member.getorder',
+                'link' => 'member.logout',
             ],
         ];
     }

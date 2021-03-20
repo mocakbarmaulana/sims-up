@@ -55,7 +55,7 @@ class Menu extends Component
             [
                 'label' => 'Order',
                 'icon' => 'fas fa-shopping-basket',
-                'link' => 'skill.index',
+                'link' => 'order.index',
             ],
             [
                 'label' => 'Payment',

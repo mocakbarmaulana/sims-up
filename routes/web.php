@@ -43,7 +43,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function(){
     Route::resource('skill', 'App\Http\Controllers\Admin\SkillController');
     Route::resource('teacher', 'App\Http\Controllers\Admin\TeacherController');
     Route::resource('learner', 'App\Http\Controllers\Admin\LearnerController');
-
+    Route::resource('order', 'App\Http\Controllers\Admin\OrderController');
     //Course
     Route::resource('course', 'App\Http\Controllers\Admin\CourseController');
 });

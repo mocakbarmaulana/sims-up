@@ -51,7 +51,8 @@
                             @endif
                         </td>
                         <td class="text-center">
-                            <a href="#" class="btn btn-sm btn-outline-success">Detail</a>
+                            <a href="{{route('order.edit', $order->id)}}"
+                                class="btn btn-sm btn-outline-success">Detail</a>
                         </td>
                     </tr>
                     @endforeach

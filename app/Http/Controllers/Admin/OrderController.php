@@ -64,7 +64,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $active = 'Oder';
+        $order = Order::find($id);
+
+        return view('admin.order.edit', compact('active', 'order'));
     }
 
     /**

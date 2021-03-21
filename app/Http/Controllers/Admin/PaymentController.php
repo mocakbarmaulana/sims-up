@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +16,14 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        $active = 'Order';
+        $active = 'Payment';
         $q = $request->q;
-        $orders = Order::where("student_name", "like", "%{$q}%")
-                        ->orderBy('created_at', 'DESC')
-                        ->paginate(10);
 
-        return view('admin.order.index', compact('active', 'orders'));
+        $payments = Payment::where('name_transfer', 'like', "%{$q}%")
+                            ->orderBy('created_at', 'DESC')
+                            ->paginate(10);
+
+        return view('admin.payment.index', compact('active', 'payments'));
     }
 
     /**
@@ -64,10 +66,11 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $active = 'Order';
-        $order = Order::find($id);
+        $active = 'Payment';
+        $payment = Payment::find($id);
+        $order = Order::find($payment->order_id);
 
-        return view('admin.order.edit', compact('active', 'order'));
+        return view('admin.payment.edit', compact('active', 'payment', 'order'));
     }
 
     /**
@@ -79,7 +82,14 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::find($request->id_order);
+        $payment = Payment::find($id);
+        $order->status = true;
+        $payment->status = true;
+        $payment->save();
+        $order->save();
+
+        return redirect()->back()->with('success', 'Order berhasil diupdate');
     }
 
     /**

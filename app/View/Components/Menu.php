@@ -60,7 +60,7 @@ class Menu extends Component
             [
                 'label' => 'Payment',
                 'icon' => 'fas fa-cash-register',
-                'link' => 'skill.index',
+                'link' => 'payment.index',
             ],
         ];
     }

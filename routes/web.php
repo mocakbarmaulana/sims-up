@@ -40,12 +40,12 @@ Route::group(['prefix' => 'member', 'namespace' => 'member'], function(){
 // Admin Route
 // Route::get('/skill', [App\Http\Controllers\Admin\SkillController::class, 'index'])->name('admin.skill');
 Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function(){
+    Route::resource('course', 'App\Http\Controllers\Admin\CourseController');
     Route::resource('skill', 'App\Http\Controllers\Admin\SkillController');
     Route::resource('teacher', 'App\Http\Controllers\Admin\TeacherController');
     Route::resource('learner', 'App\Http\Controllers\Admin\LearnerController');
     Route::resource('order', 'App\Http\Controllers\Admin\OrderController');
-    //Course
-    Route::resource('course', 'App\Http\Controllers\Admin\CourseController');
+    Route::resource('payment', 'App\Http\Controllers\Admin\PaymentController');
 });
 
 

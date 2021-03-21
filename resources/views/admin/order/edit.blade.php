@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-<title>List Order Course</title>
+<title>Invoice Order Course</title>
 @endsection
 
 

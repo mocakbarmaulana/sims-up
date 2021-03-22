@@ -32,7 +32,7 @@ class mainSidebar extends Component
         return [
             [
                 'label' => 'Course',
-                'link' => 'member.getorder',
+                'link' => 'member.getcourseall',
             ],
             [
                 'label' => 'Order',

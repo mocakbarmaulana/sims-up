@@ -91,4 +91,14 @@ class MemberController extends Controller
         return redirect()->back()->with('success', 'Silakan tunggu untuk beberapa saat');
 
     }
+
+    public function getCourseAll(){
+        $active = 'Course';
+        $id = Auth::guard('member')->id();
+
+        $courses = Order::where('student_id', $id)->get();
+
+
+        return view('member.course', compact('active', 'courses'));
+    }
 }

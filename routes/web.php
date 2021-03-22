@@ -31,6 +31,8 @@ Route::group(['prefix' => 'member', 'namespace' => 'member'], function(){
     Route::get('/order', [App\Http\Controllers\Member\MemberController::class, 'getOrderAll'])->name('member.getorder');
     Route::get('/order/detail/{id}', [App\Http\Controllers\Member\MemberController::class, 'getOrderDetail'])->name('member.getorderdetail');
 
+    Route::get('/course', [App\Http\Controllers\Member\MemberController::class, 'getCourseAll'])->name('member.getcourseall');
+
     Route::post('/order/{id}', [App\Http\Controllers\Member\MemberController::class, 'setOrder'])->name('member.setorder');
     Route::post('/payment', [App\Http\Controllers\Member\MemberController::class, 'payment'])->name('member.payment');
 });

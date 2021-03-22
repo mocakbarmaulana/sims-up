@@ -96,9 +96,23 @@ class MemberController extends Controller
         $active = 'Course';
         $id = Auth::guard('member')->id();
 
-        $courses = Order::where('student_id', $id)->get();
+        $courses = Order::where('student_id', $id)->where('status', 1)->get();
 
 
         return view('member.course', compact('active', 'courses'));
+    }
+
+    public function getDetailCourse($id){
+        $active = 'Course';
+        $course = Order::where('status', 1)
+                        ->where('course_id', $id)
+                        ->where('student_id', Auth::guard('member')->id())
+                        ->first();
+
+        if(is_null($course)){
+            return redirect()->back();
+        }
+
+        return view('member.detailcourse', compact('active', 'course'));
     }
 }

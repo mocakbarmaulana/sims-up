@@ -109,7 +109,7 @@ class TeacherController extends Controller
         $teacher->email = $request->email;
         $teacher->address = $request->address;
         $teacher->status = $request->status;
-        if(!empty($request->password)) { 
+        if(!empty($request->password)) {
             $teacher->password = $request->password;
         };
         $teacher->save();
@@ -125,6 +125,11 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
+        $teacher = Teacher::withCount(['courses'])->find($id);
+        if($teacher->courses_count != 0) {
+            return redirect()->back()->with('error', 'Teacher sudah ada kelas yang terhubung');
+        }
+
         Teacher::destroy($id);
 
         return redirect(route('teacher.index'))->with('success', 'Teacher berhasil dihapus');

@@ -37,14 +37,6 @@
                         </td>
                     </tr>
                     @endforeach
-                    <tr>
-                        <th>2018/20/13</th>
-                        <td>Lorem ipsum dolor sit amet.</td>
-                        <td>Lorem ipsum dolor sit amet.</td>
-                        <td>
-                            <a href="#" class="btn btn-primary btn-sm">Detail</a>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>

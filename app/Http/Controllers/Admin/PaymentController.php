@@ -68,9 +68,8 @@ class PaymentController extends Controller
     {
         $active = 'Payment';
         $payment = Payment::find($id);
-        $order = Order::find($payment->order_id);
 
-        return view('admin.payment.edit', compact('active', 'payment', 'order'));
+        return view('admin.payment.edit', compact('active', 'payment'));
     }
 
     /**

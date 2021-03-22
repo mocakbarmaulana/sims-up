@@ -10,8 +10,10 @@
     <div class="row mb-3">
         <div class="col d-flex justify-content-center align-items-center">
             <form action="" method="get">
-                <input type="hidden" value="0" name="q">
-                <button href="" class="order-filter bg-green-mint text-center py-3 rounded" style="width: 150px">
+                <input type="hidden" value="1" name="q">
+                <button href=""
+                    class="order-filter bg-green-mint text-center py-3 rounded @if ($status == 1) btn-active @endif"
+                    style="width: 150px">
                     <i class="fas fa-dollar-sign fa-2x"></i><br>
                     Dibayar
                 </button>
@@ -19,8 +21,10 @@
         </div>
         <div class="col d-flex justify-content-center align-items-center">
             <form action="">
-                <input type="hidden" value="1" name="q">
-                <button type="submit" class="order-filter bg-green-mint text-center py-3 rounded" style="width: 150px">
+                <input type="hidden" value="0" name="q">
+                <button type="submit"
+                    class="order-filter bg-green-mint text-center py-3 rounded @if ($status == 3) btn-active @endif"
+                    style="width: 150px">
                     <i class="fas fa-money-check-alt fa-2x"></i><br>
                     Belum dibayar
                 </button>

@@ -19,6 +19,8 @@ class CourseController extends Controller
 
     public function show($id){
         $active = 'Course';
-        return view('admin.course.show', compact('active'));
+        $course = Course::find($id);
+
+        return view('admin.course.show', compact('active', 'course'));
     }
 }

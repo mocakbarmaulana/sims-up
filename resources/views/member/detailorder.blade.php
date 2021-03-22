@@ -39,7 +39,7 @@
                 <li class="my-3">
                     <p class="m-0"><strong>Status : </strong></p>
                     @if ($order->status == 1)
-                    <span><i class="far fa-check-circle text-success"></i> Belum Dibayar</span>
+                    <span><i class="far fa-check-circle text-success"></i> Dibayar</span>
                     @else
                     <span><i class="far fa-times-circle text-danger"></i> Belum Dibayar</span>
                     @endif
@@ -48,8 +48,10 @@
 
             <div class="px-2">
                 <button class="btn btn-block bg-green-mint order-filter font-weight-bold">See Course</button>
+                @if ($order->status == 0)
                 <button class="btn btn-block btn-warning font-weight-bold" data-toggle="modal"
                     data-target="#staticBackdrop">Confirm Payment</button>
+                @endif
             </div>
         </div>
     </div>

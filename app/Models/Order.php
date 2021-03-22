@@ -23,6 +23,10 @@ class Order extends Model
         return $this->belongsTo(Student::class);
     }
 
+    public function payments(){
+        return $this->hasOne(Payment::class);
+    }
+
     // public function courses(){
     //     return $this->hasManyThrough(Course::class, Student::class);
     // }

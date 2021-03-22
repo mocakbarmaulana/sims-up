@@ -64,27 +64,27 @@
                     <ul class="list-unstyled">
                         <li>
                             <p><strong>Invoice : </strong><br>
-                                {{$order->invoice}}
+                                {{$payment->order->invoice}}
                             </p>
                         </li>
                         <li>
                             <p><strong>Course : </strong><br>
-                                {{$order->course->name}}
+                                {{$payment->order->course->name}}
                             </p>
                         </li>
                         <li>
                             <p><strong>Name Student : </strong><br>
-                                {{$order->student_name}}
+                                {{$payment->order->student_name}}
                             </p>
                         </li>
                         <li>
                             <p><strong>Subtotal : </strong><br>
-                                {{'IDR. '. number_format($order->subtotal)}}
+                                {{'IDR. '. number_format($payment->order->subtotal)}}
                             </p>
                         </li>
                         <li>
                             <p><strong>Status : </strong><br>
-                                @if ($order->status == 1)
+                                @if ($payment->order->status == 1)
                                 <span><i class="far fa-check-circle text-success"></i> Dibayar</span>
                                 @else
                                 <span><i class="far fa-times-circle text-danger"></i> Belum Dibayar</span>
@@ -97,17 +97,18 @@
 
             <div class="button d-flex flex-column">
                 <div class="mb-3">
-                    @if ($order->status == 0)
+                    @if ($payment->order->status == 0)
                     <form action="{{route('payment.update', $payment->id )}}" method="post">
                         @method('PUT')
                         @csrf
-                        <input type="hidden" name="id_order" value="{{$order->id}}">
+                        <input type="hidden" name="id_order" value="{{$payment->order->id}}">
                         <button type="submit" class="btn btn-block btn-lg btn-success">Confirm Payment</button>
                     </form>
                     @endif
                 </div>
                 <div class="mb-3">
-                    <a href="{{route('order.edit', $order->id)}}" class="btn btn-block btn-lg btn-info">See Order</a>
+                    <a href="{{route('order.edit', $payment->order->id)}}" class="btn btn-block btn-lg btn-info">See
+                        Order</a>
                 </div>
             </div>
         </div>

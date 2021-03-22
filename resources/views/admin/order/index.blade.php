@@ -45,7 +45,7 @@
                         <td>{{$order->course->name}}</td>
                         <td class="text-center">
                             @if ($order->status == 1)
-                            <span><i class="far fa-check-circle text-success"></i> Belum Dibayar</span>
+                            <span><i class="far fa-check-circle text-success"></i> Dibayar</span>
                             @else
                             <span><i class="far fa-times-circle text-danger"></i> Belum Dibayar</span>
                             @endif

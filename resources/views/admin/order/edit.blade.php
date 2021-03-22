@@ -35,7 +35,7 @@
                                 <li class="mb-3">
                                     <strong>Status :</strong><br>
                                     @if ($order->status == 1)
-                                    <span><i class="far fa-check-circle text-success"></i> Belum Dibayar</span>
+                                    <span><i class="far fa-check-circle text-success"></i> Dibayar</span>
                                     @else
                                     <span><i class="far fa-times-circle text-danger"></i> Belum Dibayar</span>
                                     @endif
@@ -89,7 +89,8 @@
 
     <div class="row my-3 d-flex">
         <div class="col w-50">
-            <a href="#" class="btn btn-block btn-warning font-weight-bold">Check Payments</a>
+            <a href="{{route('payment.edit', $order->payments->id)}}"
+                class="btn btn-block btn-warning font-weight-bold">Check Payments</a>
         </div>
         <div class="col text-right">
             <a href="#" class="btn btn-success font-weight-bold btn-block">Detail Course</a>

@@ -19,15 +19,27 @@ class MemberController extends Controller
     public function getOrderAll(Request $request){
         $active = 'Order';
         $id = Auth::guard('member')->id();
+        $status = null;
+        // $q = (is_null($request->q)) ? '1' : $request->q;
+        if(!is_null($request->q)){
+            $status = ($request->q == 1) ? '1' : '0';
+        }
 
-        $q = (is_null($request->q)) ? '' : $request->q;
+        if($request->q != ''){
+            $orders = Order::where('student_id', $id)
+                            ->where('status', $status)
+                            ->orderBy('created_at', 'DESC')
+                            ->paginate(10);
+            $status = ($status == 0) ? '3': '1';
 
-        $orders = Order::where('student_id', $id)
-                        ->where('status', $q)
-                        ->orderBy('created_at', 'DESC')
-                        ->paginate(10);
+        } else {
+            $orders = Order::where('student_id', $id)
+                            ->orderBy('created_at', 'DESC')
+                            ->paginate(10);
+        }
 
-        return view('member.order', compact('active', 'orders'));
+
+        return view('member.order', compact('active', 'orders', 'status'));
     }
 
     public function setOrder(Request $request, $id){

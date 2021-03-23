@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Expert;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\course_details;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,15 +49,11 @@ class ClassController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->time);
 
         $this->validate($request, [
             'name' => 'required|unique:courses|max:150',
             'description' => 'required|string',
-            'date' => 'required|date',
-            'time' => 'required|string',
             'price' => 'required|integer',
-            'kuota' => 'required|integer',
             'skill' => 'required|integer',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -68,13 +65,24 @@ class ClassController extends Controller
         $course->image_course = $image;
         $course->teacher_id = Auth::guard('expert')->user()->id;
         $course->description = $request->description;
-        $course->quota_student = $request->kuota;
         $course->price = $request->price;
-        $course->event_date = $request->date;
-        $course->event_time = $request->time;
         $course->skill_id = $request->skill;
+        $course->event = $request->type;
         $course->status = true;
         $course->save();
+
+        $number = ($request->event_date[2]) ? 2 : 1;
+
+        for ($i=1; $i <= $number; $i++) {
+            $courseDetail = new course_details();
+            $courseDetail->course_id = Course::orderBy('id', 'DESC')->first()->id;
+            $courseDetail->link = ($request->event_link[$i]) ? $request->event_link[$i] : null;
+            $courseDetail->event_date = ($request->event_date[$i]) ? $request->event_date[$i] : null;
+            $courseDetail->event_time = ($request->event_time[$i]) ? $request->event_time[$i] : null;
+            $courseDetail->event_location = ($request->event_location[$i]) ? $request->event_location[$i] : null;
+            $courseDetail->quota = ($request->event_quota[$i]) ? $request->event_quota[$i] : null;
+            $courseDetail->save();
+        }
 
         return redirect(route('expert.class'))->with('success', 'Course baru telah berhasil ditambahkan');
     }

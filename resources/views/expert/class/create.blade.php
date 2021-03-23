@@ -11,7 +11,7 @@
         <li class="breadcrumb-item active"><a href="{{route('expert.class')}}">{{$active}}</a></li>
 </ol>
 </nav> --}}
-<div class="mx-3 p-2 bg-light">
+<div class="">
     <div class="row">
         <div class="col">
             <form action="{{route('expert.class.store')}}" method="POST" enctype="multipart/form-data">
@@ -34,7 +34,7 @@
         <div class="col-1"></div>
         <div class="col">
             <div class="form-group">
-                <label for="nameCourse">Name Course</label>
+                <label for="nameCourse">Name Workshop</label>
                 @error('name')
                 <span class="text-danger text-sm">*{{$message}}</span>
                 @enderror
@@ -49,37 +49,80 @@
                     name="description">{{old('description')}}</textarea>
             </div>
             <div class="form-group">
-                <label for="priceCourse">Price Course</label>
+                <label for="priceCourse">Price Workshop</label>
                 @error('price')
                 <span class="text-danger text-sm">*{{$message}}</span>
                 @enderror
                 <input type="number" class="form-control" id="priceCourse" name="price" value="{{old('price')}}">
             </div>
+
             <div class="form-group">
-                <label for="kuotaCourse">Kuota Course</label>
-                @error('kuota')
-                <span class="text-danger text-sm">*{{$message}}</span>
-                @enderror
-                <input type="number" class="form-control" id="kuotaCourse" name="kuota" value="{{old('kuota')}}">
+                <label>Type Workshop</label>
+                <select name="type" class="form-control">
+                    <option value="online">Online</option>
+                    <option value="offline">Offline</option>
+                </select>
             </div>
-            <div class="form-row">
-                <div class="form-group col">
-                    <label>Event Date</label>
-                    @error('date')
-                    <span class="text-danger text-sm">*{{$message}}</span>
-                    @enderror
-                    <input type="date" name="date" class="form-control" value="{{old('date')}}">
+
+            <div class="workshop-box">
+                <div class='offline-workshop'>
+                    <h6>Event Ke-1</h6>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>Event Date</label>
+                            <input type="date" class="form-control" name="event_date[1]">
+                        </div>
+                        <div class="col form-group">
+                            <label>Event Time</label>
+                            <input type="time" class="form-control" name="event_time[1]">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Event Location</label>
+                        <input type="text" class="form-control" name="event_location[1]">
+                    </div>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>Link Workshop Online</label>
+                            <input type="text" class="form-control" name="event_link[1]">
+                        </div>
+                        <div class="col form-group">
+                            <label>Quota Event</label>
+                            <input type="text" class="form-control" name="event_quota[1]">
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group col">
-                    <label>Event Time</label>
-                    @error('time')
-                    <span class="text-danger text-sm">*{{$message}}</span>
-                    @enderror
-                    <input type="time" name="time" class="form-control" placeholder="Attended" value="{{old('time')}}">
+                <div class='offline-workshop'>
+                    <h6>Event Ke-2</h6>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>Event Date</label>
+                            <input type="date" class="form-control" name="event_date[2]">
+                        </div>
+                        <div class="col form-group">
+                            <label>Event Time</label>
+                            <input type="time" class="form-control" name="event_time[2]">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Event Location</label>
+                        <input type="text" class="form-control" name="event_location[2]">
+                    </div>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>Link Workshop Online</label>
+                            <input type="text" class="form-control" name="event_link[2]">
+                        </div>
+                        <div class="col form-group">
+                            <label>Quota Event</label>
+                            <input type="text" class="form-control" name="event_quota[2]">
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="form-group">
-                <label for="achivementSkillCourse">Achivement Skill Course</label>
+                <label for="achivementSkillCourse">Achivement Skill Workshop</label>
                 @error('skill')
                 <span class="text-danger text-sm">*{{$message}}</span>
                 @enderror
@@ -105,25 +148,25 @@
 @endsection
 
 @section('js')
-
-$("#customFile").change(function(){
-const name = $(this.files[0])[0].name;
-$(".image-text").text(name);
-readUrlImage($(this));
+<script>
+    $("#customFile").change(function(){
+    const name = $(this.files[0])[0].name;
+    $(".image-text").text(name);
+    readUrlImage($(this));
 });
 
 
 function readUrlImage(input){
-let reader = new FileReader();
+    let reader = new FileReader();
 
-console.log(reader);
+    console.log(reader);
 
-reader.onload = function(e){
-$(".image-preview").attr('src', e.target.result);
-{{-- console.log(e); --}}
+    reader.onload = function(e){
+    $(".image-preview").attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input[0].files[0]);
 }
 
-reader.readAsDataURL(input[0].files[0]);
-{{-- console.log(input[0].files[0]); --}}
-}
+</script>
 @endsection

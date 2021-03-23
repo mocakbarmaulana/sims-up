@@ -19,9 +19,10 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->string('image_course');
             $table->unsignedBigInteger('teacher_id');
-            $table->string('description');
+            $table->text('description');
             $table->integer('price');
-            $table->unsignedBigInteger('course_detail_id');
+            $table->string('event');
+            // $table->unsignedBigInteger('course_detail_id');
             $table->boolean('status');
             $table->timestamps();
         });

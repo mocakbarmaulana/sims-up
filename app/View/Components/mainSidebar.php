@@ -31,6 +31,10 @@ class mainSidebar extends Component
     public function menus(){
         return [
             [
+                'label' => 'Account',
+                'link' => 'member.account',
+            ],
+            [
                 'label' => 'Course',
                 'link' => 'member.getcourseall',
             ],

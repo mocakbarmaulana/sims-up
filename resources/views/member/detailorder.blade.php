@@ -3,7 +3,7 @@
 @section('head')
 <title>Detail Order</title>
 {{-- <link rel="stylesheet" href="{{asset('assets/css/member/detailorder.css')}}"> --}}
-<link rel="stylesheet" href="{{asset('assets/css/member/order.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/member/member.css')}}">
 @endsection
 
 @section('content')

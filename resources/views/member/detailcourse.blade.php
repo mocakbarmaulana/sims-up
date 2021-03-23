@@ -2,7 +2,6 @@
 
 @section('head')
 <title>{{$course->course->name}} | Detail Course</title>
-{{-- <link rel="stylesheet" href="{{asset('assets/css/member/course.css')}}"> --}}
 @endsection
 
 @section('content')

@@ -115,4 +115,29 @@ class MemberController extends Controller
 
         return view('member.detailcourse', compact('active', 'course'));
     }
+
+    public function getAccount(){
+        $active = 'Account';
+        $account = Student::find(Auth::guard('member')->id());
+
+        return view('member.account', compact('active', 'account'));
+    }
+
+    public function setUpdateAccount(Request $request,$id){
+        $this->validate($request, [
+            'name' => 'required|string|max:150',
+            'email' => 'required|email|unique:students,email,'.$id,
+            'phone_number' => 'required|integer',
+            'address' => 'required|max:255',
+        ]);
+
+        $account = Student::find($id);
+        $account->name = $request->name;
+        $account->email = $request->email;
+        $account->phone_number = $request->phone_number;
+        $account->address = $request->address;
+        $account->save();
+
+        return redirect()->back()->with('success', 'Account berhasil diupdate');
+    }
 }

@@ -2,7 +2,7 @@
 
 @section('head')
 <title>Course</title>
-<link rel="stylesheet" href="{{asset('assets/css/member/course.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/member/member.css')}}">
 @endsection
 
 @section('content')

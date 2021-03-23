@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-<nav aria-label="breadcrumb">
+{{-- <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Expert</li>
         <li class="breadcrumb-item active"><a href="{{route('expert.class')}}">{{$active}}</a></li>
-    </ol>
-</nav>
+</ol>
+</nav> --}}
 <div class="mx-3 p-2 bg-light">
     <div class="row">
         <div class="col">

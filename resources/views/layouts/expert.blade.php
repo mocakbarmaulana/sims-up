@@ -2,60 +2,55 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    @yield('title')
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}" />
+    {{-- Bootstrap --}}
+    <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
 
-    {{-- <link rel="stylesheet" href="{{asset('assets/css/kuwi.css')}}"> --}}
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}" />
+    {{-- Font Awesome --}}
+    <link rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
+
+    {{-- My Css --}}
+    {{-- <link rel="stylesheet" href="{{asset('assets/css/cms.css')}}"> --}}
+    <link rel="stylesheet" href="{{asset('assets/css/global.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/expert.css')}}">
+
+    @yield('head')
 </head>
 
-<body class="hold-transition sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
+<body>
 
-        @include('layouts.expertmodules.header')
-
-        @include('layouts.expertmodules.sidebar')
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Main content -->
-
-            @yield('content')
-
-            <!-- /.content -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="height: 60px">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="{{asset('assets/images/Logo2.png')}}" alt="" style="width: 120px">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                </ul>
+            </div>
         </div>
-        <!-- /.content-wrapper -->
+    </nav>
 
-        @include('layouts.expertmodules.footer')
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+    <div class="container py-5">
+        @yield('content')
     </div>
-    <!-- ./wrapper -->
 
-    <!-- jQuery -->
-    <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
-    <script>
-        @yield('js')
-    </script>
+    @include('layouts.modules.mainfooter')
+
+
+    {{-- JScript JS --}}
+    <script src="{{asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
+
+    {{-- Bootstrap 4 --}}
+    <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    @yield('js')
 </body>
 
 </html>

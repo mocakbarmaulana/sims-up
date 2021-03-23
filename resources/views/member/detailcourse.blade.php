@@ -21,7 +21,7 @@
                     {{$course->course->description}}
                 </li>
                 <li class="mb-3"><b>Link :</b><br>
-                    meet.gcom
+                    {{$course->course->link}}
                 </li>
             </ul>
         </div>

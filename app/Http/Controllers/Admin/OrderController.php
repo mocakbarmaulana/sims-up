@@ -67,7 +67,9 @@ class OrderController extends Controller
         $active = 'Order';
         $order = Order::find($id);
 
-        return view('admin.order.edit', compact('active', 'order'));
+        $orderpayment = ($order->payments) ? $order->payments->id : false;
+
+        return view('admin.order.edit', compact('active', 'order', 'orderpayment'));
     }
 
     /**

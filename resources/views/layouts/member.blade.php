@@ -10,6 +10,7 @@
 
     {{-- My Css --}}
     <link rel="stylesheet" href="{{asset('assets/css/cms.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/global.css')}}">
 
     {{-- FontAwesome --}}
     <link rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">

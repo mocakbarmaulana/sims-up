@@ -89,8 +89,10 @@
 
     <div class="row my-3 d-flex">
         <div class="col w-50">
-            <a href="{{route('payment.edit', $order->payments->id)}}"
-                class="btn btn-block btn-warning font-weight-bold">Check Payments</a>
+            @if ($orderpayment)
+            <a href="{{route('payment.edit', $orderpayment)}}" class="btn btn-block btn-warning font-weight-bold">Check
+                Payments</a>
+            @endif
         </div>
         <div class="col text-right">
             <a href="#" class="btn btn-success font-weight-bold btn-block">Detail Course</a>

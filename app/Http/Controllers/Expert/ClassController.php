@@ -106,6 +106,7 @@ class ClassController extends Controller
      */
     public function edit($id)
     {
+        $active = "Class";
         $idExpert = Auth::guard('expert')->id();
         $courses = Course::all();
 
@@ -113,7 +114,6 @@ class ClassController extends Controller
             return redirect(route('expert.class'));
         }
 
-        $active = "Class";
         $course = $courses->find($id);
         $skills = Skill::all();
 
@@ -133,9 +133,8 @@ class ClassController extends Controller
         $this->validate($request, [
             'name' => 'required|max:150|unique:courses,name,'.$id,
             'description' => 'required|string',
-            'price' => 'required|integer',
-            'kuota' => 'required|integer',
             'skill' => 'required|integer',
+            'price' => 'required|integer',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
@@ -146,10 +145,22 @@ class ClassController extends Controller
         $course->name = $request->name;
         $course->image_course = $image;
         $course->description = $request->description;
-        $course->quota_student = $request->kuota;
+        $course->event = $request->type;
         $course->price = $request->price;
         $course->skill_id = $request->skill;
         $course->save();
+
+        $courseDetails = course_details::where('course_id', $id)->get();
+
+        foreach($courseDetails as $key => $courseDetail){
+            $courseDetail->link = ($request->event_link[$key]) ? $request->event_link[$key] : null;
+            $courseDetail->event_date = ($request->event_date[$key]) ? $request->event_date[$key] : null;
+            $courseDetail->event_time = ($request->event_time[$key]) ? $request->event_time[$key] : null;
+            $courseDetail->event_location = ($request->event_location[$key]) ? $request->event_location[$key] : null;
+            $courseDetail->quota = ($request->event_quota[$key]) ? $request->event_quota[$key] : null;
+            $courseDetail->save();
+        }
+
 
         return redirect(route('expert.class.edit', $id))->with('success', 'Course berhasil diperbaharui');
     }

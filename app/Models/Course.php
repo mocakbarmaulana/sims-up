@@ -26,4 +26,8 @@ class Course extends Model
     public function orders(){
         return $this->hasMany(Order::class);
     }
+
+    public function course_details(){
+        return $this->hasMany(course_details::class);
+    }
 }

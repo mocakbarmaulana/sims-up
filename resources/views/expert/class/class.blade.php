@@ -6,9 +6,9 @@
 
 @section('content')
 <div class="row">
-    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 300px">
+    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 400px">
         <a href="{{route('expert.class.create')}}" class="text-dark-blue">
-            <div class="card my-3 shadow" style="height: 250px; width: 250px">
+            <div class="card my-3 shadow" style="height: 400px; width: 250px">
                 <div class="card-body d-flex justify-content-center align-items-center text-center">
                     <div>
                         <i class="fas fa-plus-circle fa-9x"></i>
@@ -20,18 +20,21 @@
     </div>
 
     @foreach ($courses as $course)
-    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 300px">
-        <a href="" class="text-dark-blue">
-            <div class="card my-3 shadow" style="height: 250px; width: 250px">
-                <div class="box-image w-100 h-100">
-                    <img src="{{asset('storage/assets/images/course/'.$course->image_course)}}" height="100%"
-                        alt="image-course" width="100%" class="bordered">
-                    <div class="box-title px-3">
-                        <h5>{{$course->name}}</h5>
-                    </div>
+    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 400px">
+        <div class="card my-3 shadow" style="height: 400px; width: 250px">
+            <div class="box-image">
+                <img src="{{asset('storage/assets/images/course/'.$course->image_course)}}" alt="image-course"
+                    class="bordere img-thumbnail">
+                <div class="box-title p-3 position-relative">
+                    <h5>{{$course->name}}</h5>
+                </div>
+                <div class="px-3 position-absolute w-100 mb-3" style="bottom: 0">
+                    <a href="#" class="btn btn-sm btn-info btn-block">Detail</a>
+                    <a href="{{route('expert.class.edit', $course->id)}}"
+                        class="btn btn-sm btn-warning btn-block">Edit</a>
                 </div>
             </div>
-        </a>
+        </div>
     </div>
     @endforeach
 </div>

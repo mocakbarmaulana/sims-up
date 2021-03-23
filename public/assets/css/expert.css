@@ -54,7 +54,7 @@ a:hover {
 }
 
 /* Box Webinar Online */
-.box-image {
+/* .box-image {
     position: relative;
     transition: all 10s;
     overflow: hidden;
@@ -62,9 +62,9 @@ a:hover {
 
 .box-image img {
     transition: all 0.2s;
-}
+} */
 
-.box-image:hover img {
+/* .box-image:hover img {
     transform: scale(1.2) rotate(10deg);
 }
 
@@ -85,4 +85,4 @@ a:hover {
     position: absolute;
     bottom: 0;
     z-index: 0;
-}
+} */

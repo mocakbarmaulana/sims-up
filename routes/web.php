@@ -70,6 +70,7 @@ Route::group(['prefix' => 'expert', 'middleware' => 'expert'], function(){
     Route::put('/class/update/{id}', [App\Http\Controllers\Expert\ClassController::class, 'update'])->name('expert.class.update');
     Route::delete('/class/delete/{id}', [App\Http\Controllers\Expert\ClassController::class, 'destroy'])->name('expert.class.delete');
     Route::post('/class/store', [App\Http\Controllers\Expert\ClassController::class, 'store'])->name('expert.class.store');
+    Route::post('/achive/{id}', [App\Http\Controllers\Expert\ExpertController::class, 'achive'])->name('expert.achive');
 
     Route::get('/logout', [App\Http\Controllers\Expert\LoginExpertController::class, 'logout'])->name('expert.logout');
 });

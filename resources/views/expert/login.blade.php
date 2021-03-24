@@ -20,7 +20,9 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{asset('adminlte/')}}/index2.html"><b>Sims-</b>UP</a>
+            <a href="/">
+                <img src="{{asset('assets/images/Logo.png')}}" alt="" width="250px">
+            </a>
         </div>
         <!-- /.login-logo -->
         <div class="card">

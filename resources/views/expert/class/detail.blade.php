@@ -7,6 +7,15 @@
 
 @section('content')
 <div class="row">
+    @if (session('success'))
+    <div class="col-12">
+        <div class="alert alert-succes" role="alert">
+            {{session('success')}}
+        </div>
+    </div>
+    @endif
+
+
     <div class="col-6">
         <img src="{{asset('storage/assets/images/course/'.$course->image_course)}}" width="100%" height="100%" alt="">
     </div>
@@ -57,9 +66,16 @@
     </div>
 </div>
 <div class="row my-3">
-    <div class="col">
+    <div class="col-12">
         <b>Description :</b>
         <p>{{$course->description}}</p>
+    </div>
+    <div class="col-12 row">
+        <div class="col"></div>
+        <div class="col">
+            <button type="button" class="btn btn-primary btn-block btn-end" data-idcourse="{{$course->id}}"
+                data-toggle="modal" data-target="#btnEnd">Finish</button>
+        </div>
     </div>
 </div>
 
@@ -147,4 +163,36 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="btnEnd" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center mt-4">
+                <div>
+                    <i class="fas fa-trophy fa-4x text-primary mb-3"></i>
+                    <p class="text-secondary"><strong>Workshop ini telah selesai? <br> dan trophy akan diberikan ke
+                            member
+                        </strong></p>
+                </div>
+                <div class="mt-5">
+                    <form action="{{route('expert.achive', $course->id)}}" class="form-end" method="post">
+                        @csrf
+                        <button type="button" class="btn btn-outline-secondary mx-3" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success mx-3">Finish</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('js')
+{{-- <script>
+    $(".btn-end").on("click", function(){
+const id = $(this)[0].dataset.idcourse;
+$(".form-end").attr('action', `/expert/achive/${id}`);
+});
+</script> --}}
 @endsection

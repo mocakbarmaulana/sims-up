@@ -99,6 +99,11 @@ class ClassController extends Controller
     public function show($id)
     {
         $course = Course::find($id);
+
+        if(Auth::guard('expert')->id() != $course->teacher_id){
+            return redirect()->back();
+        }
+
         $detailcourse = course_details::where('course_id', $id)->get();
         // $order = Order::where('status', 1)->where('course_id', $id)->get();
 

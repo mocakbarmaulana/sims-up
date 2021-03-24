@@ -2,6 +2,7 @@
 
 @section('title')
 <title>List Course</title>
+<link rel="stylesheet" href="{{asset('assets/css/admin/admin.css')}}">
 @endsection
 
 @section('content')
@@ -21,26 +22,49 @@
                 </div>
                 <div class="card-body p-0">
 
+                    <nav class="mt-3">
+                        <div class="container text-center">
+                            <div class="nav nav-tabs row" id="nav-tab" role="tablist">
+                                <a class="nav-link active col mx-2" id="nav-event-one-tab" data-toggle="tab"
+                                    href="#nav-event-one" role="tab" aria-controls="nav-event-one"
+                                    aria-selected="true">Event
+                                    1</a>
+                                <a class="nav-link col mx-2" id="nav-event-two-tab" data-toggle="tab"
+                                    href="#nav-event-two" role="tab" aria-controls="nav-event-two"
+                                    aria-selected="false">Event 2</a>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-event-one" role="tabpanel"
+                            aria-labelledby="nav-home-tab"> JOS </div>
+                        <div class="tab-pane fade" id="nav-event-two" role="tabpanel"
+                            aria-labelledby="nav-event-two-tab">
+                            <table class="table table-bordered table-striped">
+                                <thead class="">
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($course->orders as $order)
+                                    <tr>
+                                        <td style="width: 30px">{{$loop->index + 1}}.</td>
+                                        <td>{{$order->student->name}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                     <div class="form-group">
 
                     </div>
 
-                    <table class="table table-bordered table-striped">
-                        <thead class="">
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($course->orders as $order)
-                            <tr>
-                                <td style="width: 30px">{{$loop->index + 1}}.</td>
-                                <td>{{$order->student->name}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+
+
                 </div>
             </div>
         </div>
@@ -65,17 +89,32 @@
                             <b>Type :</b><br>
                             {{$course->event}}
                         </li>
-                        {{-- <li class="mb-3">
-                            <b>Event Date :</b><br>
-                            {{date('d-m-Y', strtotime($course->event_date))}}
-                        </li>
-                        <li class="mb-3">
-                            <b>Slot :</b><br>
-                            {{ $course->quota_student}}
-                        </li> --}}
                         <li class="mb-3">
                             <b>Skill :</b><br>
                             {{ $course->skill->name}}
+                        </li>
+                        <li class="mb-3">
+                            @foreach ($course->course_details as $key => $event)
+                            <b>Event {{$key + 1}}</b>
+                            <ul>
+                                <li><i>Event Date : </i>
+                                    {{date('l', strtotime($event->event_date)) }},
+                                    {{date('d-m-Y', strtotime($event->event_date))}}
+                                </li>
+                                <li><i>Event Time :</i>
+                                    {{$event->event_time}}
+                                </li>
+                                @if ($course->event == 'offline')
+                                <li><i>Event Location :</i>
+                                    {{$event->event_location}}
+                                </li>
+                                @else
+                                <li><i>Event Link :</i>
+                                    <a href="#">{{$event->link}}</a>
+                                </li>
+                                @endif
+                            </ul>
+                            @endforeach
                         </li>
                     </ul>
                 </div>

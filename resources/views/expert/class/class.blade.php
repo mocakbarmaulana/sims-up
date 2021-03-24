@@ -20,7 +20,7 @@
     </div>
 
     @foreach ($courses as $course)
-    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 400px">
+    <div class="col-4 mb-5 d-flex justify-content-center align-items-center" style="height: 400px">
         <div class="card my-3 shadow" style="height: 400px; width: 250px">
             <div class="box-image">
                 <img src="{{asset('storage/assets/images/course/'.$course->image_course)}}" alt="image-course"

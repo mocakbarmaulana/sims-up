@@ -81,11 +81,9 @@
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    @if (!$order)
-                    <span>oke</span>
-                    @endif
-
                     <div class="tab-pane fade show active" id="nav-event-1" role="tabpanel">
+                        @if (!$order->isEmpty())
+                        @if (!empty($order[0]))
                         <table class="table table-bordered table-striped">
                             <thead class="">
                                 <tr>
@@ -94,17 +92,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @if (!$order->isEmpty())
                                 @foreach ($order[0]->orders as $item)
                                 <tr>
                                     <td style="width: 30px">{{$loop->index + 1}}.</td>
                                     <td>{{$item->student->name}}</td>
                                 </tr>
                                 @endforeach
-                                @endif
                             </tbody>
                         </table>
+                        @else
+                        <div class="alert alert-info my-2" role="alert">
+                            Tidak Ada Event 1
+                        </div>
+                        @endif
+                        @else
+                        <div class="alert alert-info my-2" role="alert">
+                            Belum ada member
+                        </div>
+                        @endif
                     </div>
                     <div class="tab-pane fade" id="nav-event-2" role="tabpanel">
                         @if (!$order->isEmpty())
@@ -131,6 +136,10 @@
                             Tidak Ada Event 2
                         </div>
                         @endif
+                        @else
+                        <div class="alert alert-info my-2" role="alert">
+                            Belum ada member
+                        </div>
                         @endif
                     </div>
                 </div>

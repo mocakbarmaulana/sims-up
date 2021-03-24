@@ -35,11 +35,11 @@
                             </div>
                         </div>
                     </nav>
-                    <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-content px-2" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-event-one" role="tabpanel"
-                            aria-labelledby="nav-home-tab"> JOS </div>
-                        <div class="tab-pane fade" id="nav-event-two" role="tabpanel"
-                            aria-labelledby="nav-event-two-tab">
+                            aria-labelledby="nav-home-tab">
+                            @if (!$order->isEmpty())
+                            @if (!empty($order[0]))
                             <table class="table table-bordered table-striped">
                                 <thead class="">
                                     <tr>
@@ -48,14 +48,56 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($course->orders as $order)
+                                    @foreach ($order[0]->orders as $itemtwo)
                                     <tr>
                                         <td style="width: 30px">{{$loop->index + 1}}.</td>
-                                        <td>{{$order->student->name}}</td>
+                                        <td>{{$itemtwo->student->name}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                            @else
+                            <div class="alert alert-info my-2" role="alert">
+                                Tidak Ada Event 2
+                            </div>
+                            @endif
+                            @else
+                            <div class="alert alert-info my-2" role="alert">
+                                Belum ada member
+                            </div>
+                            @endif
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-event-two" role="tabpanel"
+                            aria-labelledby="nav-event-two-tab">
+                            @if (!$order->isEmpty())
+                            @if (!empty($order[1]))
+                            <table class="table table-bordered table-striped">
+                                <thead class="">
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($order[1]->orders as $itemtwo)
+                                    <tr>
+                                        <td style="width: 30px">{{$loop->index + 1}}.</td>
+                                        <td>{{$itemtwo->student->name}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            @else
+                            <div class="alert alert-info my-2" role="alert">
+                                Tidak Ada Event 2
+                            </div>
+                            @endif
+                            @else
+                            <div class="alert alert-info my-2" role="alert">
+                                Belum ada member
+                            </div>
+                            @endif
                         </div>
                     </div>
 

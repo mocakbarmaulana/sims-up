@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\course_details;
 
 class CourseController extends Controller
 {
@@ -21,6 +22,11 @@ class CourseController extends Controller
         $active = 'Course';
         $course = Course::find($id);
 
-        return view('admin.course.show', compact('active', 'course'));
+        $order = course_details::whereHas('orders', function($q){
+            $q->where('status', 1);
+        })->where('course_id', $id)->orderBy('event_date', 'ASC')->orderBy('event_time', 'ASC')->get();
+
+
+        return view('admin.course.show', compact('active', 'course', 'order'));
     }
 }

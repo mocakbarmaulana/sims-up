@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 class LoginExpertController extends Controller
 {
     public function index(){
+        if (Auth::guard('expert')->check()) {
+            return redirect(route('expert.class'));
+        }
+
         return view('expert.login');
     }
 
@@ -17,7 +21,7 @@ class LoginExpertController extends Controller
             'email' => 'required|string|exists:teachers,email',
             'password' => 'required|string',
         ]);
-        
+
         // Inputan yg diambil
         $credentials = $request->only('email', 'password');
 

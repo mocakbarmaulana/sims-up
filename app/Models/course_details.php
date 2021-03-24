@@ -16,6 +16,6 @@ class course_details extends Model
     }
 
     public function orders(){
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'course_detail_id');
     }
 }

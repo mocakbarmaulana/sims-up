@@ -1,6 +1,6 @@
 @extends('layouts.expert')
 
-@section('title')
+@section('head')
 <title>Expert | Edit Course</title>
 @endsection
 
@@ -66,40 +66,7 @@
 
 
             <div class="workshop-box">
-                @foreach ($course->course_details as $courseDetail)
-                <div class='offline-workshop'>
-                    <h6>Event Ke-{{$loop->iteration}}</h6>
-                    <div class="form-row">
-                        <div class="col form-group">
-                            <label>Event Date</label>
-                            <input type="date" class="form-control" name="event_date[{{$loop->index}}]"
-                                value="{{$courseDetail->event_date}}">
-                        </div>
-                        <div class="col form-group">
-                            <label>Event Time</label>
-                            <input type="time" class="form-control" name="event_time[{{$loop->index}}]"
-                                value="{{$courseDetail->event_time}}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Event Location</label>
-                        <input type="text" class="form-control" name="event_location[{{$loop->index}}]"
-                            value="{{$courseDetail->event_location}}">
-                    </div>
-                    <div class="form-row">
-                        <div class="col form-group">
-                            <label>Link Workshop Online</label>
-                            <input type="text" class="form-control" name="event_link[{{$loop->index}}]"
-                                value="{{$courseDetail->link}}">
-                        </div>
-                        <div class="col form-group">
-                            <label>Quota Event</label>
-                            <input type="text" class="form-control" name="event_quota[{{$loop->index}}]"
-                                value="{{$courseDetail->quota}}">
-                        </div>
-                    </div>
-                </div>
-                @endforeach
+
             </div>
 
             <div class="form-group">
@@ -121,9 +88,50 @@
                     </select>
                 </div>
             </div>
-            <div class="text-right mt-4">
-                <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach ($course->course_details as $courseDetail)
+        <div class='offline-workshop col'>
+            <h6>Event Ke-{{$loop->iteration}}</h6>
+            <div class="form-row">
+                <div class="col form-group">
+                    <label>Event Date</label>
+                    <input type="date" class="form-control" name="event_date[{{$loop->index}}]"
+                        value="{{$courseDetail->event_date}}">
+                </div>
+                <div class="col form-group">
+                    <label>Event Time</label>
+                    <input type="time" class="form-control" name="event_time[{{$loop->index}}]"
+                        value="{{$courseDetail->event_time}}">
+                </div>
             </div>
+            <div class="form-group">
+                <label>Event Location</label>
+                <input type="text" class="form-control" name="event_location[{{$loop->index}}]"
+                    value="{{$courseDetail->event_location}}">
+            </div>
+            <div class="form-row">
+                <div class="col form-group">
+                    <label>Link Workshop Online</label>
+                    <input type="text" class="form-control" name="event_link[{{$loop->index}}]"
+                        value="{{$courseDetail->link}}">
+                </div>
+                <div class="col form-group">
+                    <label>Quota Event</label>
+                    <input type="text" class="form-control" name="event_quota[{{$loop->index}}]"
+                        value="{{$courseDetail->quota}}">
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+
+    <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6 text-right mt-4">
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </div>
     </div>
 </form>

@@ -102,7 +102,7 @@
                                     {{date('d-m-Y', strtotime($event->event_date))}}
                                 </li>
                                 <li><i>Event Time :</i>
-                                    {{$event->event_time}}
+                                    {{$event->event_time}} WIB
                                 </li>
                                 @if ($course->event == 'offline')
                                 <li><i>Event Location :</i>

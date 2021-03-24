@@ -29,7 +29,8 @@
                     <h5>{{$course->name}}</h5>
                 </div>
                 <div class="px-3 position-absolute w-100 mb-3" style="bottom: 0">
-                    <a href="#" class="btn btn-sm btn-info btn-block">Detail</a>
+                    <a href="{{route('expert.class.show', $course->id)}}"
+                        class="btn btn-sm btn-info btn-block">Detail</a>
                     <a href="{{route('expert.class.edit', $course->id)}}"
                         class="btn btn-sm btn-warning btn-block">Edit</a>
                 </div>

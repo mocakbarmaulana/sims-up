@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Expert;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\course_details;
+use App\Models\Order;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+
+use function PHPUnit\Framework\isEmpty;
 
 class ClassController extends Controller
 {
@@ -95,7 +98,18 @@ class ClassController extends Controller
      */
     public function show($id)
     {
-        //
+        $course = Course::find($id);
+        $detailcourse = course_details::where('course_id', $id)->get();
+        // $order = Order::where('status', 1)->where('course_id', $id)->get();
+
+        $order = course_details::whereHas('orders', function($q){
+            $q->where('status', 1);
+        })->where('course_id', $id)->orderBy('event_date', 'ASC')->orderBy('event_time', 'ASC')->get();
+
+        //  dd($order->isEmpty());
+
+
+        return view('expert.class.detail', compact('course', 'detailcourse', 'order'));
     }
 
     /**

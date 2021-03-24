@@ -8,11 +8,24 @@
 
 @section('content')
 <div class="py-4">
+    @if ($order->payments && $order->payments->status == 0)
+    <div class="px-2">
+        <div class="alert alert-info" role="alert">
+            Tunggu beberapa saat, karena pembayaran sedang dikonfirmasi admin
+        </div>
+    </div>
+    @endif
     <div class="row">
         <div class="col-7">
             <div class="px-2">
                 <img src="{{asset('storage/assets/images/course/'.$order->course->image_course)}}" alt="image-course"
                     class="img-thumbnail" style="height: 470px">
+                <ul class="list-unstyled">
+                    <li class="my-3">
+                        <p class="m-0"><strong>Description : </strong></p>
+                        <span>{{$order->course->description}}</span>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="col pl-0">
@@ -21,16 +34,12 @@
                     <h5>{{$order->course->name}}</h5>
                 </li>
                 <li class="my-3">
-                    <p class="m-0"><strong>Description : </strong></p>
-                    <span>{{$order->course->description}}</span>
-                </li>
-                <li class="my-3">
                     <p class="m-0"><strong>Invoice : </strong></p>
                     <span>{{$order->invoice}}</span>
                 </li>
                 <li class="my-3">
                     <p class="m-0"><strong>Price : </strong></p>
-                    <span>IDR. {{number_format($order->subtotal)}}</span>
+                    <span>${{number_format($order->subtotal)}}</span>
                 </li>
                 <li class="my-3">
                     <p class="m-0"><strong>Date Invoice : </strong></p>
@@ -47,10 +56,11 @@
             </ul>
 
             <div class="px-2">
-                <button class="btn btn-block bg-green-mint order-filter font-weight-bold">See Course</button>
                 @if ($order->status == 0)
                 <button class="btn btn-block btn-warning font-weight-bold" data-toggle="modal"
                     data-target="#staticBackdrop">Confirm Payment</button>
+                @else
+                <button class="btn btn-block bg-green-mint order-filter font-weight-bold">See Course</button>
                 @endif
             </div>
         </div>

@@ -20,17 +20,29 @@
 
             <div class="d-flex flex-column justify-content-between" style="height: 450px">
                 <ul class="list-unstyled">
-                    <li class="my-3">
+                    {{-- <li class="my-3">
                         <p class="m-0"><strong>Description : </strong></p>
                         <span>{{$course->description}}</span>
+                    </li> --}}
+                    <li class="my-3">
+                        <p class="m-0"><strong>Choose Date : </strong></p>
+                        <select class="form-control detail_course">
+                            @foreach ($course->course_details as $coursedetail)
+                            <option value="{{$coursedetail->id}}">
+                                {{date("l", strtotime($coursedetail->event_date))}},
+                                {{date('d/m/Y', strtotime($coursedetail->event_date))}}
+                                ({{$coursedetail->event_time}} WIB) <br>
+                            </option>
+                            @endforeach
+                        </select>
                     </li>
                     <li class="my-3">
-                        <p class="m-0"><strong>Event Date : </strong></p>
-                        <span>{{ date('d/m/Y', strtotime($course->event_date))}}</span>
+                        <p class="m-0"><strong>Description : </strong></p>
+                        <span>{{ substr($course->description, 0, 100) }}..</span>
                     </li>
                     <li class="my-3">
                         <p class="m-0"><strong>Price : </strong></p>
-                        <span class="text-warning font-weight-bold">IDR. {{ number_format($course->price)}}</span>
+                        <span class="text-warning font-weight-bold">${{ number_format($course->price)}}</span>
                     </li>
                 </ul>
                 <button type="button" class="btn btn-primary btn-block btn-order-course" data-idcourse="{{$course->id}}"
@@ -60,6 +72,7 @@
                     <form action="" class="form-order-course" method="post">
                         @csrf
                         <input type="hidden" name="price" value="{{$course->price}}">
+                        <input type="hidden" name="detail_id" class="input-detail">
                         <button type="button" class="btn btn-outline-secondary mx-3" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success mx-3">Order</button>
                     </form>
@@ -73,6 +86,10 @@
 @section('js')
 $(".btn-order-course").on("click", function(){
 const id = $(this)[0].dataset.idcourse;
-$(".form-order-course").attr('action', `/member/order/${id}`)
+$(".form-order-course").attr('action', `/member/order/${id}`);
+$detail = $(".detail_course").val();
+$(".input-detail").val($detail);
 });
+
+
 @endsection

@@ -75,7 +75,7 @@
                                 <tfoot>
                                     <tr>
                                         <th scope="col" class="text-right">Total : </th>
-                                        <td class="text-right font-weight-bold">IDR.{{number_format($order->subtotal)}}
+                                        <td class="text-right font-weight-bold">$.{{number_format($order->subtotal)}}
                                         </td>
                                     </tr>
                                 </tfoot>

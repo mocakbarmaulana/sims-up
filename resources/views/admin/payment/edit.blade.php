@@ -39,7 +39,7 @@
                             <ul class="list-unstyled">
                                 <li class="mb-3">: {{$payment->name_transfer}}</li>
                                 <li class="mb-3">: {{$payment->name_banktransfer}}</li>
-                                <li class="mb-3">: IDR. {{number_format($payment->amount)}}</li>
+                                <li class="mb-3">: $ {{number_format($payment->amount)}}</li>
                                 <li class="mb-3">: {{date('d-m-Y', strtotime($payment->transfer_date))}}</li>
                             </ul>
                         </div>
@@ -79,7 +79,7 @@
                         </li>
                         <li>
                             <p><strong>Subtotal : </strong><br>
-                                {{'IDR. '. number_format($payment->order->subtotal)}}
+                                {{'$'. number_format($payment->order->subtotal)}}
                             </p>
                         </li>
                         <li>

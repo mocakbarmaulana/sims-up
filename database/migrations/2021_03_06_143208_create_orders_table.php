@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->string('invoice');
             $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('course_id');
+            $table->unsignedInteger('course_detail_id');
             $table->string('student_name');
             $table->string('student_address');
             $table->integer('subtotal');

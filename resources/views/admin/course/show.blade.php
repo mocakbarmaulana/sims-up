@@ -20,6 +20,11 @@
                     <h5>List Member Course</h5>
                 </div>
                 <div class="card-body p-0">
+
+                    <div class="form-group">
+
+                    </div>
+
                     <table class="table table-bordered table-striped">
                         <thead class="">
                             <tr>
@@ -57,13 +62,17 @@
                             By. {{$course->teacher->name}}
                         </li>
                         <li class="mb-3">
+                            <b>Type :</b><br>
+                            {{$course->event}}
+                        </li>
+                        {{-- <li class="mb-3">
                             <b>Event Date :</b><br>
                             {{date('d-m-Y', strtotime($course->event_date))}}
                         </li>
                         <li class="mb-3">
                             <b>Slot :</b><br>
                             {{ $course->quota_student}}
-                        </li>
+                        </li> --}}
                         <li class="mb-3">
                             <b>Skill :</b><br>
                             {{ $course->skill->name}}

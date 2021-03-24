@@ -14,4 +14,8 @@ class course_details extends Model
     public function course(){
         return $this->belongsTo(Course::class);
     }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
 }

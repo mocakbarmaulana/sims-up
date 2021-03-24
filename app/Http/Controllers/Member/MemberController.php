@@ -49,6 +49,7 @@ class MemberController extends Controller
         $order->invoice = Str::random(5) . '-' . time();
         $order->student_id = Auth::guard('member')->id();
         $order->course_id = $id;
+        $order->course_detail_id = $request->detail_id;
         $order->student_name = $user->name;
         $order->student_address = $user->address;
         $order->subtotal = $request->price;

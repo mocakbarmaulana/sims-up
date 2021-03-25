@@ -36,12 +36,10 @@
                     <li class="nav-item active">
                         <a class="nav-link text-white" href="{{route('expert.class')}}">Home</a>
                     </li>
-                    @auth
                     <li class="nav-item">
                         <a class="nav-link mx-4 text-white" href="{{route('expert.logout')}}">Log Out <i
                                 class="fas fa-sign-out-alt"></i></a>
                     </li>
-                    @endauth
                 </ul>
             </div>
         </div>

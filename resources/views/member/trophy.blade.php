@@ -17,19 +17,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($trophys as $trophy)
                     <tr>
-                        <td>Mark</td>
-                        <td>1</td>
-
+                        <td>{{$trophy->name_skill}}</td>
+                        <td>{{$trophy->total}}</td>
                     </tr>
-                    <tr>
-                        <td>Jacob</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>Larry</td>
-                        <td>3</td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

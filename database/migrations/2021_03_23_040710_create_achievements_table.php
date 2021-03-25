@@ -17,11 +17,12 @@ class CreateAchievementsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('skil_id');
+            $table->unsignedBigInteger('skill_id');
             $table->string('name_student')->nullable();
             $table->string('name_course')->nullable();
             $table->string('name_skill')->nullable();
             $table->boolean('status')->nullable();
+            $table->integer('total')->nullable();
             $table->timestamps();
         });
     }

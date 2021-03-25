@@ -71,7 +71,7 @@ class ClassController extends Controller
         $course->price = $request->price;
         $course->skill_id = $request->skill;
         $course->event = $request->type;
-        $course->status = true;
+        $course->status = false;
         $course->save();
 
         $number = ($request->event_date[2]) ? 2 : 1;

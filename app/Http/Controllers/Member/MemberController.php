@@ -146,8 +146,15 @@ class MemberController extends Controller
     public function getTrophy(){
         $active = 'Achievement';
         $id = Auth::guard('member')->id();
-        $trophy = Achievement::where('student_id', $id)->get();
+        $trophys = Achievement::where('student_id', $id)->get();
+        // $test = Achievement::withCount('student')->where('student_id', $id)->get();
 
-        return view('member.trophy', compact('active', 'trophy'));
+        // dd($test);
+        // foreach($test as $i){
+        //     // var_dump($i);
+        //     var_dump($i->student_count);
+        // }die;
+
+        return view('member.trophy', compact('active', 'trophys'));
     }
 }

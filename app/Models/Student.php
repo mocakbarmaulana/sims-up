@@ -26,6 +26,10 @@ class Student extends Authenticatable
     }
 
     public function orders(){
-        $this->hasMany(Order::class);
+        return $this->hasMany(Order::class);
+    }
+
+    public function achievement(){
+        return $this->hasMany(Achievement::class);
     }
 }

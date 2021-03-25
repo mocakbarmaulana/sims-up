@@ -35,6 +35,10 @@ class mainSidebar extends Component
                 'link' => 'member.account',
             ],
             [
+                'label' => 'Achievement',
+                'link' => 'member.achievement',
+            ],
+            [
                 'label' => 'Course',
                 'link' => 'member.getcourseall',
             ],

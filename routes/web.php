@@ -28,6 +28,10 @@ Route::group(['prefix' => 'member', 'namespace' => 'member'], function(){
     Route::post('/register', [App\Http\Controllers\Member\LoginMemberController::class, 'memberRegister'])->name('member.register_proses');
     Route::get('/logout', [App\Http\Controllers\Member\LoginMemberController::class, 'logout'])->name('member.logout');
 
+});
+
+// Member Route Auth
+Route::group(['prefix' => 'member', 'middleware' => 'member'], function(){
     Route::get('/order', [App\Http\Controllers\Member\MemberController::class, 'getOrderAll'])->name('member.getorder');
     Route::get('/order/detail/{id}', [App\Http\Controllers\Member\MemberController::class, 'getOrderDetail'])->name('member.getorderdetail');
 
@@ -37,8 +41,11 @@ Route::group(['prefix' => 'member', 'namespace' => 'member'], function(){
     Route::get('/course', [App\Http\Controllers\Member\MemberController::class, 'getCourseAll'])->name('member.getcourseall');
     Route::get('/course/detail/{id}', [App\Http\Controllers\Member\MemberController::class, 'getDetailCourse'])->name('member.getdetailcourse');
 
+    Route::get('/achievement', [App\Http\Controllers\Member\MemberController::class, 'getTrophy'])->name('member.achievement');
+
     Route::post('/order/{id}', [App\Http\Controllers\Member\MemberController::class, 'setOrder'])->name('member.setorder');
     Route::post('/payment', [App\Http\Controllers\Member\MemberController::class, 'payment'])->name('member.payment');
+
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

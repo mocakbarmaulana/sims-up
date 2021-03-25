@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Member;
 
 use App\Helper\Helper;
 use App\Http\Controllers\Controller;
+use App\Models\Achievement;
 use App\Models\Course;
 use App\Models\Order;
 use App\Models\Payment;
@@ -140,5 +141,13 @@ class MemberController extends Controller
         $account->save();
 
         return redirect()->back()->with('success', 'Account berhasil diupdate');
+    }
+
+    public function getTrophy(){
+        $active = 'Achievement';
+        $id = Auth::guard('member')->id();
+        $trophy = Achievement::where('student_id', $id)->get();
+
+        return view('member.trophy', compact('active', 'trophy'));
     }
 }

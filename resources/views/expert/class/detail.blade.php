@@ -9,12 +9,11 @@
 <div class="row">
     @if (session('success'))
     <div class="col-12">
-        <div class="alert alert-succes" role="alert">
+        <div class="alert alert-success" role="alert">
             {{session('success')}}
         </div>
     </div>
     @endif
-
 
     <div class="col-6">
         <img src="{{asset('storage/assets/images/course/'.$course->image_course)}}" width="100%" height="100%" alt="">
@@ -29,6 +28,14 @@
             <li>
                 <b>Event :</b><br>
                 {{$course->event}}
+            </li>
+            <li>
+                <b>Status :</b><br>
+                @if ($course->status == 1)
+                Workshop Finished
+                @else
+                Not Finished
+                @endif
             </li>
         </ul>
         <div class="row">
@@ -70,6 +77,7 @@
         <b>Description :</b>
         <p>{{$course->description}}</p>
     </div>
+    @if ($course->status == 0)
     <div class="col-12 row">
         <div class="col"></div>
         <div class="col">
@@ -77,6 +85,7 @@
                 data-toggle="modal" data-target="#btnEnd">Finish</button>
         </div>
     </div>
+    @endif
 </div>
 
 {{-- Member Layout --}}
@@ -179,7 +188,7 @@
                     <form action="{{route('expert.achive', $course->id)}}" class="form-end" method="post">
                         @csrf
                         <button type="button" class="btn btn-outline-secondary mx-3" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success mx-3">Finish</button>
+                        <button type="submit" class="btn btn-primary mx-3">Finish</button>
                     </form>
                 </div>
             </div>

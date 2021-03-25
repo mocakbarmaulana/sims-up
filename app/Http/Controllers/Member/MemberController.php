@@ -8,10 +8,12 @@ use App\Models\Achievement;
 use App\Models\Course;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Models\Skill;
 use App\Models\Student;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 use function PHPUnit\Framework\isNull;
 
@@ -94,14 +96,21 @@ class MemberController extends Controller
 
     }
 
-    public function getCourseAll(){
+    public function getCourseAll(Request $request){
         $active = 'Course';
         $id = Auth::guard('member')->id();
+        $q = $request->q;
 
-        $courses = Order::where('student_id', $id)->where('status', 1)->get();
 
 
-        return view('member.course', compact('active', 'courses'));
+        $courses = Order::when($request->q, function($q){
+            $q->where('course_id', 7)
+            ->orWhere('student_id', 1);
+        })->where('student_id', $id)->get();
+
+        $skills = Skill::all();
+
+        return view('member.course', compact('active', 'courses', 'skills'));
     }
 
     public function getDetailCourse($id){

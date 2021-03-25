@@ -8,6 +8,25 @@
 @section('content')
 <div class="p-4">
     <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex align-items-center justify-content-end">
+                    <label class="font-weight-bold text-secondary">Skill :</label>
+                </div>
+                <div class="col-3">
+                    <form action="" id="form" method="GET">
+                        <select name="q" class="custom-select mb-3 input-mint">
+                            <option value="" selected>All</option>
+                            @foreach ($skills as $skill)
+                            <option value="{{$skill->id}}">{{$skill->name}}</option>
+                            @endforeach
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         @foreach ($courses as $course)
         <div class="col-4 mb-4">
             <div class="card">
@@ -25,4 +44,12 @@
         @endforeach
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+    $(".input-mint").on('change', function(){
+        $("#form").submit();
+    })
+</script>
 @endsection

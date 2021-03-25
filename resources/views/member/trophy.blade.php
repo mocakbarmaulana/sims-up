@@ -9,22 +9,19 @@
 <div class="p-4">
     <div class="row mb-3">
         <div class="col">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Skill</th>
-                        <th scope="col" style="width: 20px">Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($trophys as $trophy)
-                    <tr>
-                        <td>{{$trophy->name_skill}}</td>
-                        <td>{{$trophy->total}}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="display-5 font-weight-bold">Skill</span>
+                    <span class="display-5 font-weight-bold">Total</span>
+                </li>
+                @foreach ($trophys as $trophy)
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="d-blcok d-flex align-items-center"><i class="fas fa-medal text-warning fa-2x mr-2"></i>
+                        {{$trophy->name_skill}}</span>
+                    <span class="badge btn-active badge-pill">{{$trophy->total}}</span>
+                </li>
+                @endforeach
+            </ul>
         </div>
     </div>
 </div>

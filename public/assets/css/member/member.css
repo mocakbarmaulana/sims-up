@@ -7,6 +7,10 @@
     border: none;
 }
 
+.color-mint {
+    color: #97f8e4;
+}
+
 .order-filter:hover {
     background-color: #7ccfbf;
     color: #fff;
